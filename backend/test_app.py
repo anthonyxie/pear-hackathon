@@ -23,5 +23,17 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(r.status_code, 201)
         self.assertIn("sections", r.get_json())
 
+    def test_multiselect_parser(self):
+        blob = """
+        1. Which integrations do you use? (Select all that apply)
+           Question type: multiple select
+           Answer options: GitHub, GitLab, Bitbucket
+        """
+        from utils import parse_questions_from_claude_response
+        q = parse_questions_from_claude_response(blob)[0]
+        self.assertEqual(q["type"], "multiple_select")
+        self.assertEqual(q["options"], ["GitHub", "GitLab", "Bitbucket"])
+
+
 if __name__ == "__main__":
     unittest.main()

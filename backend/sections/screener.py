@@ -27,7 +27,9 @@ def run(ctx: dict) -> dict:
         target=ctx["target"],
         audience=ctx["survey_type"],
         metadata=ctx["metadata_as_text"],
+        research=ctx["research"],          # ← add this line
     )
+
     resp = llm(prompt, BASE_SYSTEM_PROMPT) or ""
     questions = _parse(resp) or _fallback()
 

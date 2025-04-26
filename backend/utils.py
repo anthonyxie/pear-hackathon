@@ -1,69 +1,105 @@
-# backend/utils.py
 """
-Robust question-block parser for Claude responses.
-
-Handles the most common plain-text or Markdown variants, e.g.
-
-    1. How frequently do you use the product?
-       Question type: multiple choice
-       Answer options: Daily, Weekly, Monthly, Rarely
-
-    **Q2** How satisfied are you ...  
-    • Type: Scale (1-5)  
-    • Options: 1, 2, 3, 4, 5
-
-Returns a list of dicts in the canonical structure expected by the rest
-of the code-base.
+Utility: parse Claude-generated question blocks into structured dicts.
 """
+
 from __future__ import annotations
 import re, uuid
 
-# Map Claude's wording → our internal enum
+# Claude → internal enum
 QUESTION_TYPE_MAP = {
     "multiple choice": "multiple_choice",
+    "multiple-choice": "multiple_choice",
+    "multiple select": "multiple_select",
     "single choice":   "single_choice",
+    "single-choice":   "single_choice",
     "scale":           "scale",
     "boolean":         "boolean",
     "yes/no":          "boolean",
 }
 
-# -------- regex ------------------------------------------------------------
+
+# ───────────────────────── regex ──────────────────────────
+#  Only match lines that **begin with a number** (or Q<number>)
+#  Examples that should match:
+#    "1. How …"
+#    "23)  When did …"
+#    "**Q2**  How satisfied …"
 _paragraph_re = re.compile(
     r"""
-    ^\s*                              # start of line / possible indentation
-    (?:\*\*?Q?|\d+[\.\)])\s*          # "1.", "Q1", "**Q1**", etc.
-    (?P<text>[^ \n].+?)               # the question text (lazy, up to newline)
+    ^\s*                              # line start
+    (?:\*{0,2}Q?\d+[\.\)]?)\s+        # "1.", "23)", "**Q2**" …
+    (?P<text>[^\n]+?)                 # the question sentence
     \s*$                              # EOL
-    (?=.*?(?:type|question\s*type)[:\s]+(?P<qtype>[^\n]+))?       # look-ahead for type
-    (?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>[^\n]+))?    #   … and options
+
+    #(?s)(?=.*?(?:type|question\s*type)[:\s]+(?P<qtype>[^\n]+?))   # look-ahead for type
+    #(?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>.+?))(?:\n|$) # …and options
+    (?=.*?(?:type|question\s*type)[:\s]+(?P<qtype>[^\n]+?))       # look-ahead for type
+    #(?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>.+?))(?:\n|$)  # …and options
+    (?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>[^\n]+)) 
     """,
-    re.IGNORECASE | re.MULTILINE | re.VERBOSE,
+    #re.IGNORECASE | re.MULTILINE | re.VERBOSE,
+    re.IGNORECASE | re.MULTILINE | re.DOTALL | re.VERBOSE,
 )
-# ---------------------------------------------------------------------------
+
+# ──────────────────────────────────────────────────────────
 
 
 def parse_questions_from_claude_response(resp: str) -> list[dict]:
-    """Return structured questions extracted from Claude’s raw text."""
-    seen, out = set(), []
-
+    """Return a list of question dicts extracted from Claude’s raw text."""
+    seen: set[str] = set()
+    out: list[dict] = []
     for m in _paragraph_re.finditer(resp):
-        text = m.group("text").strip(" -*`")
+        text = m.group("text").strip(" -*`").rstrip(":").strip()
+
+        # Skip stray lines the regex might still catch
+        if text.lower().startswith(("question type", "answer options", "type:", "options:")):
+            continue
         if not text or text.lower() in seen:
             continue
         seen.add(text.lower())
 
-        # Question type
-        qtype_raw = (m.group("qtype") or "text").lower()
-        for k, v in QUESTION_TYPE_MAP.items():
-            if k in qtype_raw:
-                qtype = v
-                break
-        else:
-            qtype = "text"
+        # ---- question type ----------------------------------------------
+        qtype_raw = (m.group("qtype") or "").lower()
+        qtype = "text"  # default
 
-        # Options
+        if "multiple select" in qtype_raw:
+            qtype = "multiple_select"
+        elif "multiple choice" in qtype_raw:
+            qtype = "multiple_choice"
+        elif "single choice" in qtype_raw:
+            qtype = "single_choice"
+        elif "scale" in qtype_raw:
+            qtype = "scale"
+        elif any(kw in qtype_raw for kw in ("boolean", "yes/no")):
+            qtype = "boolean"
+
+        # Heuristic upgrades if type missing or mis-labelled
+        txt_l = text.lower()
+        if qtype == "text":
+            if "select all" in txt_l or "select up to" in txt_l:
+                qtype = "multiple_select"
+            elif "which of the following" in txt_l or "choose" in txt_l:
+                qtype = "multiple_choice"
+            elif "rate" in txt_l or "on a scale" in txt_l or "how likely" in txt_l:
+                qtype = "scale"
+            elif re.match(r"(do|are|did|will|would|have)\b", txt_l):
+                qtype = "boolean"
+
+        # ---- options ----------------------------------------------------
         opts_raw = m.group("opts")
-        opts = [o.strip() for o in opts_raw.split(",")] if opts_raw else None
+
+        if opts_raw and opts_raw.lower() not in {"n/a", "-", "none"}:
+            opts = [o.strip() for o in opts_raw.split(",")]
+        else:
+            # Generate sensible defaults
+            if qtype in {"multiple_choice", "multiple_select"}:
+                opts = ["Option A", "Option B", "Option C", "Option D"]
+            elif qtype == "scale":
+                opts = [str(i) for i in range(1, 6)]
+            elif qtype == "boolean":
+                opts = ["Yes", "No"]
+            else:
+                opts = None
 
         out.append(
             {
@@ -77,3 +113,9 @@ def parse_questions_from_claude_response(resp: str) -> list[dict]:
         )
 
     return out
+
+
+# ───────────────────────── helper ──────────────────────────
+def truncate(text: str, max_chars: int) -> str:
+    """Hard-truncate long blobs so prompts stay lean."""
+    return text if len(text) <= max_chars else text[:max_chars].rstrip() + "…"

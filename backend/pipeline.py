@@ -2,6 +2,8 @@
 import importlib
 from datetime import datetime
 from uuid import uuid4
+from config import ENABLE_WEB_SCRAPE       # ← add
+from research import fetch_research 
 
 SECTION_ORDER = [
     "screener",
@@ -16,15 +18,19 @@ SECTION_ORDER = [
 
 class SurveyPipeline:
     def __init__(self, acquirer, target, survey_type, product_categories):
+
+        research_blob = fetch_research(target)
         self.ctx = {
             "acquirer": acquirer,
             "target": target,
             "survey_type": survey_type,
             "product_categories": product_categories,
-            "metadata": {},          # grows after each call
-            "metadata_as_text": "",  # pretty-printed for the next prompt
+            "metadata": {},
+            "metadata_as_text": "",
+            "research": research_blob,      # ← store here
         }
         self.sections = []
+
 
     def run(self):
         for name in SECTION_ORDER:

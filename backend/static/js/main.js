@@ -183,7 +183,7 @@ function viewSurvey(survey) {
                     <tr>
                         <td>${index + 1}</td>
                         <td>${question.text}</td>
-                        <td><span class="badge bg-info">${question.type}</span></td>
+                        <td><span class="badge bg-info">${question.type.replace('_', ' ')}</span></td>
                         <td>${options}</td>
                     </tr>
                 `;

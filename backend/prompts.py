@@ -6,11 +6,22 @@ You are an expert survey designer for M&A due-diligence.
 Generate clear, neutral, high-signal questions for the section requested.
 Return them in plain text or Markdown; every question block must include:
   • the question text
-  • “Question type:” <multiple choice | single choice | scale | text | boolean>
-  • “Answer options:” <comma-separated options or “n/a”>
+  • "Question type:" <multiple choice | multiple select | single choice | scale | text | boolean>
+  • "Answer options:" <comma-separated options **or** “N/A” for text>
+
+Guidelines
+----------
+• Use **multiple choice** or **multiple select** for most questions.  
+• If the text says “Select all that apply” or “Select up to …”, mark it *multiple select*.  
+• For scale questions give the full range, e.g. “1,2,3,4,5” or “0-10”.  
+• Boolean questions must use “Yes, No”.
+
+IMPORTANT: Always start each question with an Arabic numeral and a period
+(e.g. “1. ”).
 """
 
-# ────────────────────────────  per-section templates  ────────────────────── #
+
+# ────────────────────────────  per-section templates  ───────────────────── #
 # Every template receives:
 #   $acquirer  – acquiring company
 #   $target    – target company
@@ -18,86 +29,107 @@ Return them in plain text or Markdown; every question block must include:
 #   $metadata  – JSON pretty-print of prior sections (can be “N/A”)
 #
 TEMPLATES = {
-    # 1️⃣  Screener – eligibility filter
+    # 1️⃣ Screener – eligibility filter
     "Screener": Template("""
 Generate **3 – 5 screener questions** to confirm a respondent is relevant to
-$acquirer’s potential acquisition of **$target**.  Questions should feel
-natural, not interrogatory.  Avoid yes/no when a richer scale is useful.
+$acquirer’s potential acquisition of **$target**. Questions should feel
+natural, not interrogatory. Avoid yes/no when a richer scale is useful.
 
 Return in the canonical format described above.
 """),
 
-    # 2️⃣  Awareness – baseline familiarity
+    # 2️⃣ Awareness – baseline familiarity
     "Awareness": Template("""
 Prior section metadata:
 $metadata
 
-Generate **3 – 5 awareness questions** gauging how familiar respondents are
-with **$target**.  Subtly detect “fakers” without sounding like a trap.
+Public context (summarised from web search, may be noisy):
+$research
+
+Generate **5 – 7 usage questions** gauging how familiar respondents are
+with **$target**. Subtly detect “fakers” without sounding like a trap.
 """),
 
-    # 3️⃣  Usage – depth & breadth
+    # 3️⃣ Usage – depth & breadth
     "Usage": Template("""
 Prior section metadata:
 $metadata
 
+Public context (summarised from web search, may be noisy):
+$research
+
 Generate **5 – 7 usage questions** for $audience about $target’s products or
-services.  Cover frequency, breadth of feature use, length of adoption, team
+services. Cover frequency, breadth of feature use, length of adoption, team
 size, and alternative tools (if any).
 """),
 
-    # 4️⃣  Voice of Customer – satisfaction & pain points
+    # 4️⃣ Voice of Customer – satisfaction & pain points
     "Voice of Customer": Template("""
 Prior section metadata:
 $metadata
 
-Generate **5 – 7 VoC questions** for $audience focusing on satisfaction,
+Public context (summarised from web search, may be noisy):
+$research
+
+Generate **5 – 7 usage questions** for $audience focusing on satisfaction,
 pain points, desired improvements, and support experience with **$target**.
 """),
 
-    # 5️⃣  Advocacy – referral / NPS inclination
+    # 5️⃣ Advocacy – referral / NPS inclination
     "Advocacy": Template("""
 Prior section metadata:
 $metadata
 
-Generate **3 – 4 advocacy questions** measuring likelihood to recommend
+Public context (summarised from web search, may be noisy):
+$research
+
+Generate **5 – 7 usage questions** measuring likelihood to recommend
 $target, perceived differentiation, and willingness to act as a reference.
 Include at least one 0-10 NPS-style scale.
 """),
 
-    # 6️⃣  KPC – key purchase criteria
+    # 6️⃣ KPC – key purchase criteria
     "KPC": Template("""
 Prior section metadata:
 $metadata
 
-Generate **4 – 6 questions** that uncover the **key drivers** behind choosing
+Public context (summarised from web search, may be noisy):
+$research
+
+Generate **5 – 7 usage questions** that uncover the **key drivers** behind choosing
 a solution like $target (e.g., price, performance, integrations, support).
 Use ranking or allocation grids where appropriate.
 """),
 
-    # 7️⃣  Channel – discovery & buying journey
+    # 7️⃣ Channel – discovery & buying journey
     "Channel": Template("""
 Prior section metadata:
 $metadata
 
-Generate **3 – 5 questions** about how $audience first discovered and finally
+Public context (summarised from web search, may be noisy):
+$research
+
+Generate **5 – 7 usage questions** about how $audience first discovered and finally
 purchased $target (channels, influencers, procurement steps, contract length).
 """),
 
-    # 8️⃣  Brand – perception & personality
+    # 8️⃣ Brand – perception & personality
     "Brand": Template("""
 Prior section metadata:
 $metadata
 
-Generate **3 – 5 brand-perception questions** that surface the adjectives,
-emotions, or imagery respondents associate with **$target**.  One question
+Public context (summarised from web search, may be noisy):
+$research
+
+Generate **5 – 7 usage questions** that surface the adjectives,
+emotions, or imagery respondents associate with **$target**. One question
 should be open-ended (“Which three words …”).
 """),
 }
 
-# ────────────────────────────  helper  ────────────────────────────────────── #
+# ────────────────────────────  helper  ───────────────────────────────────── #
 def build_prompt(section_name: str, *, acquirer: str, target: str,
-                 audience: str, metadata: str) -> str:
+                 audience: str, metadata: str, research: str) -> str:
     """
     Render the correct prompt template for the given section.
     """
@@ -110,4 +142,5 @@ def build_prompt(section_name: str, *, acquirer: str, target: str,
         target=target,
         audience="consumer users" if audience == "consumer" else "enterprise customers",
         metadata=metadata or "N/A",
+        research=research or "N/A",
     )
