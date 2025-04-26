@@ -26,17 +26,14 @@ interface Question {
   type: "text" | "multiple choice" | "single choice" | "scale";
   options: string[] | null;
   order: number;
+  required: boolean;
 }
 
 interface Node {
   id: string;
   data: {
     label: string;
-    description?: string;
-    questions?: Question[];
-    type?: "section" | "question";
-    options?: string[];
-    order?: number;
+    section?: Section;
   };
   measured?: {
     width: number;
