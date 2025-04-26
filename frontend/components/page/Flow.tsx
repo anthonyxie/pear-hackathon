@@ -23,8 +23,8 @@ function FlowContent({
   edges: Edge[];
   onNodesChange: OnNodesChange<Node>;
   onEdgesChange: OnEdgesChange<Edge>;
-  selectedNodes: Node[];
-  setSelectedNodes: (nodes: Node[]) => void;
+  selectedNodes: string[];
+  setSelectedNodes: (nodes: string[]) => void;
 }) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -32,7 +32,9 @@ function FlowContent({
   const onChange = useCallback(
     ({ nodes }: { nodes: Node[] }) => {
       if (!mounted) return;
-      setSelectedNodes(nodes);
+      if (nodes.length > 0) {
+        setSelectedNodes(nodes.map((node) => node.id));
+      }
     },
     [mounted, setSelectedNodes]
   );

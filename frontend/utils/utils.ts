@@ -41,10 +41,8 @@ const getNodesFromSurvey = (survey: Survey | null) => {
     return {
       id: section.id,
       data: {
-        questions: section.questions,
-        description: section.description,
         label: section.name,
-        order: section.order,
+        section: section,
       },
       position: { x: 0, y: 0 },
     };
