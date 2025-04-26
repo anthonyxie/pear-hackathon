@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 export default function ChatPage({
   setPage,
 }: {
-  setPage: (page: string) => void;
+  setPage: (page: number) => void;
 }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ export default function ChatPage({
     setLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 5000));
     setLoading(false);
-    setPage("secondary");
+    setPage(1);
   };
 
   return (

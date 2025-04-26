@@ -7,8 +7,6 @@ import {
   OnEdgesChange,
   OnNodesChange,
   ReactFlow,
-  useOnSelectionChange,
-  useReactFlow,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useTheme } from "next-themes";
@@ -19,7 +17,6 @@ function FlowContent({
   edges,
   onNodesChange,
   onEdgesChange,
-  selectedNodes,
   setSelectedNodes,
 }: {
   nodes: Node[];
@@ -32,13 +29,18 @@ function FlowContent({
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const { fitView } = useReactFlow();
+  const onChange = useCallback(
+    ({ nodes }: { nodes: Node[] }) => {
+      if (!mounted) return;
+      setSelectedNodes(nodes);
+    },
+    [mounted, setSelectedNodes]
+  );
 
   // Prevent hydration mismatch by only rendering after mounted on client
   useEffect(() => {
     setMounted(true);
-    fitView();
-  }, [fitView]);
+  }, []);
 
   // const onLayout = useCallback(
   //   (direction: string) => {
@@ -54,18 +56,6 @@ function FlowContent({
   //   [nodes, edges, fitView, setNodes, setEdges]
   // );
 
-  const onChange = useCallback(
-    ({ nodes }: { nodes: Node[] }) => {
-      setSelectedNodes(nodes);
-    },
-    [setSelectedNodes]
-  );
-
-  useOnSelectionChange({
-    onChange,
-  });
-
-  console.log(selectedNodes);
   if (!mounted) {
     return null;
   }
@@ -77,6 +67,7 @@ function FlowContent({
       edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
+      onSelectionChange={onChange}
       fitView
       draggable={false}
     >
