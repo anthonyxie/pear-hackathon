@@ -15,6 +15,7 @@ class APITestCase(unittest.TestCase):
             "acquiringCompany": "OpenAI",
             "targetCompany": "WINDSURF",
             "surveyType": "enterprise",
+            "targetAudience": "Engineering managers",
             "productCategories": ["IDE"]
         }
         r = self.client.post("/api/surveys",

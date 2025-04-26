@@ -6,23 +6,26 @@ Falls back to 'N/A' if scraping is disabled, stubbed, or fails.
 """
 from __future__ import annotations
 import logging, textwrap, traceback
-from typing import List
+from typing import List, Optional          # ← MOD
 from config import ENABLE_WEB_SCRAPE, USE_STUB
 from utils import truncate
-from web_scrap import ddg_search     # your existing wrapper
+from web_scrap import ddg_search    # your existing wrapper
 
 _log = logging.getLogger("research")
 
-def fetch_research(company: str,
-                   *,
-                   max_results: int = 8,
-                   max_chars: int = 1_500) -> str:
+def fetch_research(
+    company: str,
+    *,
+    query: Optional[str] = None,     # ← NEW: override the query phrase
+    max_results: int = 8,
+    max_chars: int = 1_500,
+) -> str:
     if not ENABLE_WEB_SCRAPE or USE_STUB:
         return "N/A"
 
     try:
-        results: List[dict] = ddg_search(f"{company} company overview",
-                                         max_results=max_results)
+        search_term = f"{company} {query}" if query else f"{company} company overview"
+        results: List[dict] = ddg_search(search_term, max_results=max_results)
         # Each result dict has keys like 'title', 'href', 'body', …
         bodies = [r.get("body","") for r in results if r.get("body")]
         text   = " • ".join(bodies) or "N/A"

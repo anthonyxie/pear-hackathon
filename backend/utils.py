@@ -31,13 +31,9 @@ _paragraph_re = re.compile(
     (?P<text>[^\n]+?)                 # the question sentence
     \s*$                              # EOL
 
-    #(?s)(?=.*?(?:type|question\s*type)[:\s]+(?P<qtype>[^\n]+?))   # look-ahead for type
-    #(?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>.+?))(?:\n|$) # …and options
     (?=.*?(?:type|question\s*type)[:\s]+(?P<qtype>[^\n]+?))       # look-ahead for type
-    #(?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>.+?))(?:\n|$)  # …and options
-    (?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>[^\n]+)) 
+    (?=.*?(?:options|answer\s*options)[:\s]+(?P<opts>[^\n]+))     # …and options
     """,
-    #re.IGNORECASE | re.MULTILINE | re.VERBOSE,
     re.IGNORECASE | re.MULTILINE | re.DOTALL | re.VERBOSE,
 )
 
@@ -52,7 +48,9 @@ def parse_questions_from_claude_response(resp: str) -> list[dict]:
         text = m.group("text").strip(" -*`").rstrip(":").strip()
 
         # Skip stray lines the regex might still catch
-        if text.lower().startswith(("question type", "answer options", "type:", "options:")):
+        if text.lower().startswith(
+            ("question type", "answer options", "type:", "options:")
+        ):
             continue
         if not text or text.lower() in seen:
             continue
@@ -151,4 +149,73 @@ def normalise_question_types(questions: list[dict]) -> list[dict]:
                 q["type"] = "multiple_select"
             else:
                 q["type"] = "multiple_choice"
+    return questions
+
+
+# ─────────────── termination-question helpers ─────────────── #
+def _termination_template(section: str):
+    """Return (question_text, options, termination_option)."""
+    if section == "Screener":
+        return (
+            "Which of the following best describes your current role?",
+            [
+                "Engineering manager / technical lead",
+                "Director or VP of Engineering",
+                "Software developer / individual contributor",
+                "I do not work in a technical role",  # TERMINATE
+            ],
+            "I do not work in a technical role",
+        )
+    if section == "Awareness":
+        return (
+            "How familiar are you with WINDSURF's technology or services?",
+            [
+                "Extremely familiar – daily user",
+                "Somewhat familiar – occasional user",
+                "Heard of it but never used it",
+                "I've never heard of WINDSURF",  # TERMINATE
+            ],
+            "I've never heard of WINDSURF",
+        )
+    # Usage
+    return (
+        "How long has your organisation actively used WINDSURF tools?",
+        [
+            "More than 2 years",
+            "1-2 years",
+            "Less than 1 year",
+            "We have never used WINDSURF",  # TERMINATE
+        ],
+        "We have never used WINDSURF",
+    )
+
+
+def add_termination_question(questions: list[dict], section: str) -> list[dict]:
+    """
+    Ensure exactly ONE subtly phrased question in Screener, Awareness, or Usage
+    that carries a `termination_option` flag. Front-end can abort the survey
+    if that option is selected.
+    """
+    # Already present → nothing to do
+    if any(q.get("termination_option") for q in questions):
+        return questions
+
+    qtext, opts, term_opt = _termination_template(section)
+
+    questions.insert(
+        0,
+        {
+            "id": str(uuid.uuid4()),
+            "text": qtext,
+            "type": "multiple_choice",
+            "required": True,
+            "order": 1,
+            "options": opts,
+            "termination_option": term_opt,
+        },
+    )
+
+    # Re-index orders 1…n
+    for idx, q in enumerate(questions, 1):
+        q["order"] = idx
     return questions

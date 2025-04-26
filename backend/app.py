@@ -2,7 +2,8 @@
 from __future__ import annotations
 
 # ────────────────────────────  standard libs  ──────────────────────────────── #
-import os, logging
+import os
+import logging
 from typing import Dict
 
 # ──────────────────────────────  3rd-party  ───────────────────────────────── #
@@ -12,10 +13,8 @@ from dotenv import load_dotenv
 
 # ────────────────────────────  project imports  ───────────────────────────── #
 from config import PORT, iso_now
-from pipeline import SurveyPipeline            # ← NEW: centralises section logic
-
-from utils import parse_questions_from_claude_response  # ← add this line
-
+from pipeline import SurveyPipeline                    # ← centralises section logic
+from utils import parse_questions_from_claude_response # ← import parser helper
 
 # ╭──────────────────────────  basic setup / logging  ────────────────────────╮
 load_dotenv()
@@ -46,14 +45,22 @@ def create_survey():
     POST /api/surveys
     Body:
       {
-        "acquiringCompany": "...",
-        "targetCompany": "...",
-        "surveyType": "consumer|enterprise",
-        "productCategories": ["IDE", "…"]
+        "acquiringCompany":  "...",
+        "targetCompany":    "...",
+        "surveyType":       "consumer|enterprise",
+        "productCategories": ["IDE", "…"],
+        "targetAudience":   "Engineering managers"
       }
     """
     data = request.json or {}
-    required = {"acquiringCompany", "targetCompany", "surveyType", "productCategories"}
+
+    required = {
+        "acquiringCompany",
+        "targetCompany",
+        "surveyType",
+        "productCategories",
+        "targetAudience",  # ← NEW
+    }
     if not required <= data.keys():
         return jsonify({"error": "Missing parameters"}), 400
     if data["surveyType"] not in {SURVEY_TYPE_CONSUMER, SURVEY_TYPE_ENTERPRISE}:
@@ -61,12 +68,13 @@ def create_survey():
 
     try:
         pipeline = SurveyPipeline(
-            acquirer          = data["acquiringCompany"],
-            target            = data["targetCompany"],
-            survey_type       = data["surveyType"],
-            product_categories= data["productCategories"],
+            acquirer           = data["acquiringCompany"],
+            target             = data["targetCompany"],
+            survey_type        = data["surveyType"],
+            product_categories = data["productCategories"],
+            target_audience    = data["targetAudience"],   # ← NEW
         )
-        survey = pipeline.run()          # ← builds all 8 sections
+        survey = pipeline.run()          # ← builds all sections
         surveys[survey["id"]] = survey   # cache for retrieval
 
         return jsonify(survey), 201

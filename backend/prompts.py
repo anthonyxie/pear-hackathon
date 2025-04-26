@@ -129,16 +129,48 @@ should be open-ended (“Which three words …”).
 }
 
 # ────────────────────────────  helper  ───────────────────────────────────── #
-def build_prompt(section_name: str, *, acquirer: str, target: str,
-                 audience: str, metadata: str, research: str) -> str:
+def build_prompt(
+    section_name: str,
+    *,
+    acquirer: str,
+    target: str,
+    audience: str,
+    metadata: str,
+    research: str,
+    target_audience: str | None = None,
+) -> str:
     """
     Render the correct prompt template for the given section.
+
+    Parameters
+    ----------
+    section_name : str
+        Which survey section is being generated.
+    acquirer : str
+        Name of the acquiring company.
+    target : str
+        Name of the target company.
+    audience : str
+        "consumer" | "enterprise" (converted internally to phrase).
+    metadata : str
+        JSON-pretty string of prior sections or "N/A".
+    research : str
+        Summarised external research or "N/A".
+    target_audience : str | None, optional
+        Free-text description of the respondent cohort (e.g. "Engineering managers").
+        If provided, it is prepended as a preamble so the LLM can tailor tone & jargon.
     """
     if section_name not in TEMPLATES:
         raise KeyError(f"No prompt template defined for section '{section_name}'")
 
     tpl = TEMPLATES[section_name]
-    return tpl.substitute(
+
+    preamble = (
+        f"Target audience: {target_audience}\n\n"
+        if target_audience else ""
+    )
+
+    return preamble + tpl.substitute(
         acquirer=acquirer,
         target=target,
         audience="consumer users" if audience == "consumer" else "enterprise customers",

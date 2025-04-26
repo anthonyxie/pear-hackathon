@@ -35,6 +35,19 @@
                                     <option value="enterprise" selected>Enterprise</option>
                                 </select>
                             </div>
+
+                            <!-- NEW: target audience -->
+                            <div class="mb-3">
+                                <label for="targetAudience" class="form-label">
+                                    Target&nbsp;Audience&nbsp;<small class="text-muted">(who will answer?)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="targetAudience"
+                                       placeholder="e.g. Engineering managers, DevOps leads"
+                                       required>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="productCategories" class="form-label">Product Categories (comma-separated)</label>
                                 <input type="text" class="form-control" id="productCategories" value="IDE, Code Completion, Documentation Tools" required>
