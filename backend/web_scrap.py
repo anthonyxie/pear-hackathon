@@ -18,6 +18,6 @@ def get_env_var(var_name):
     return value
 
 def ddg_search(term, timeout=20, max_results=20):
-    ddgs = DDGS(proxy=f"socks5h://{_paccount_name}:{_paccount_pass}@geo.iproyal.com:12321", timeout=20)
-    results = ddgs.text("something you need", max_results=50)
+    ddgs = DDGS(proxy=f"socks5h://{_paccount_name}:{_paccount_pass}@geo.iproyal.com:12321", timeout=max_results)
+    results = ddgs.text(term, max_results=timeout)
     return results
