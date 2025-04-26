@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>{{ survey.title }}</h1>
+            <a href="/" class="btn btn-outline-primary">Back to Dashboard</a>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Survey Information</h5>
+                <p class="card-text">{{ survey.description }}</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Survey ID:</strong> {{ survey.id }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Type:</strong> 
+                        <span class="badge bg-primary">{{ survey.type }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for section in survey.sections %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">{{ section.name }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ section.description }}</p>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%">#</th>
+                                <th style="width: 55%">Question</th>
+                                <th style="width: 15%">Type</th>
+                                <th style="width: 25%">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if section.questions and section.questions|length > 0 %}
+                            {% for question in section.questions %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ question.text }}</td>
+                                <td><span class="badge bg-info">{{ question.type }}</span></td>
+                                <td>
+                                    {% if question.options %}
+                                        {{ question.options|join(', ') }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center">No questions available</td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="d-flex justify-content-between mb-4">
+            <a href="/" class="btn btn-outline-secondary">Back to Dashboard</a>
+            <a href="#" class="btn btn-primary" id="export-json">Export JSON</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Export survey as JSON
+        document.getElementById('export-json').addEventListener('click', function(e) {
+            e.preventDefault();
+            const surveyData = {{ survey|tojson }};
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(surveyData, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "survey_" + surveyData.id + ".json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        });
+    </script>
+</body>
+</html>

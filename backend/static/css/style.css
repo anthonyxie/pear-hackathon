@@ -1,0 +1,59 @@
+/* static/css/style.css */
+
+/* API Log styling */
+.api-log {
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #212529;
+}
+
+.api-log > div {
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #e9ecef;
+    padding-bottom: 10px;
+}
+
+.api-log > div:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.api-log pre {
+    margin: 5px 0 0 10px;
+    white-space: pre-wrap;
+    font-size: 0.8rem;
+}
+
+/* Survey details styling */
+#survey-details h5 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#survey-details .card {
+    margin-bottom: 20px;
+}
+
+#survey-details .table {
+    margin-bottom: 0;
+}
+
+/* Badge styling */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* General form styling */
+form label {
+    font-weight: 500;
+}
+
+/* Make cards more consistent height */
+.card {
+    height: 100%;
+}
