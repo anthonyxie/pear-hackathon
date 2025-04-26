@@ -25,6 +25,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import QuestionOptions from "./QuestionOptions";
 
 const EditableDetails = ({
   selectedNode,
@@ -120,9 +121,35 @@ function QuestionCard({
   };
 
   const handleEditQuestionType = (type: string) => {
+    const typeValue = type as
+      | "text"
+      | "multiple choice"
+      | "single choice"
+      | "scale";
+    const newOptions =
+      (typeValue === "multiple choice" || typeValue === "single choice") &&
+      !question.options
+        ? ["Option 1"]
+        : question.options;
+
     handleUpdateQuestion({
       ...question,
-      type: type as "text" | "multiple choice" | "single choice" | "scale",
+      type: typeValue,
+      options: newOptions,
+    });
+  };
+
+  const handleEditRequired = (required: boolean) => {
+    handleUpdateQuestion({
+      ...question,
+      required,
+    });
+  };
+
+  const handleOptionsChange = (newOptions: string[]) => {
+    handleUpdateQuestion({
+      ...question,
+      options: newOptions,
     });
   };
 
@@ -166,7 +193,12 @@ function QuestionCard({
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          {question.required && <Badge variant="destructive">Required</Badge>}
+          <Badge
+            variant={question.required ? "destructive" : "default"}
+            onClick={() => handleEditRequired(!question.required)}
+          >
+            {question.required ? "Required" : "Optional"}
+          </Badge>
           {!isEditing ? (
             <Button
               variant="ghost"
@@ -195,15 +227,16 @@ function QuestionCard({
           </Button>
         </div>
       </div>
-
-      {question?.options && (
-        <CardContent>
-          <div className="mt-2">
-            <div className="font-medium text-sm">Options:</div>
-            <div className="text-sm">{JSON.stringify(question.options)}</div>
-          </div>
-        </CardContent>
-      )}
+      {(question?.type === "multiple choice" ||
+        question?.type === "single choice") &&
+        question.options && (
+          <CardContent className="-mt-4">
+            <QuestionOptions
+              options={question.options}
+              onOptionsChange={handleOptionsChange}
+            />
+          </CardContent>
+        )}
     </Card>
   );
 }
