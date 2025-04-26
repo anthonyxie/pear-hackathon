@@ -11,7 +11,8 @@ Return them in plain text or Markdown; every question block must include:
 
 Guidelines
 ----------
-• Use **multiple choice** or **multiple select** for most questions.  
+• Use **multiple choice** or **multiple select** for most questions.
+• Limit open-ended (text) questions to **one per section at most**.  
 • If the text says “Select all that apply” or “Select up to …”, mark it *multiple select*.  
 • For scale questions give the full range, e.g. “1,2,3,4,5” or “0-10”.  
 • Boolean questions must use “Yes, No”.

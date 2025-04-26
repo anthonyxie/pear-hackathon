@@ -112,10 +112,43 @@ def parse_questions_from_claude_response(resp: str) -> list[dict]:
             }
         )
 
-    return out
+    # ensure Sina’s hard rules are enforced before we hand the list back
+    return normalise_question_types(out)
 
 
 # ───────────────────────── helper ──────────────────────────
 def truncate(text: str, max_chars: int) -> str:
     """Hard-truncate long blobs so prompts stay lean."""
     return text if len(text) <= max_chars else text[:max_chars].rstrip() + "…"
+
+
+# ───────────────────────── post-processing guard ───────────────────────── #
+def normalise_question_types(questions: list[dict]) -> list[dict]:
+    """
+    Hard rules requested by Sina:
+
+    • If a question has ≥ 2 NON-empty options   →  must be multiple_choice /
+      multiple_select (never 'text').
+    • Heuristic: use multiple_select when either
+        – the wording says “select all / up to”, OR
+        – the list is long (> 6 options).
+      Otherwise default to multiple_choice.
+    • If the options array is empty, missing, or only contains '-' / 'N/A'
+      → treat as free-text (type='text', options=None).
+    """
+    for q in questions:
+        opts = q.get("options")
+        # Normalise any ["-"] or ["N/A"] to "no options"
+        if not opts or all(o.strip().lower() in {"-", "n/a", ""} for o in opts):
+            q["type"] = "text"
+            q["options"] = None
+            continue
+
+        # If we still have a real options list …
+        if len(opts) >= 2:
+            txt_l = q["text"].lower()
+            if ("select all" in txt_l) or ("select up to" in txt_l) or len(opts) > 6:
+                q["type"] = "multiple_select"
+            else:
+                q["type"] = "multiple_choice"
+    return questions

@@ -34,6 +34,15 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(q["type"], "multiple_select")
         self.assertEqual(q["options"], ["GitHub", "GitLab", "Bitbucket"])
 
+    def test_infer_mc_when_options_exist(self):
+        blob = """
+        1. What is your current role?  
+        Question type: N/A  
+        Answer options: Engineer, Product Manager, Other (please specify)
+        """
+        from utils import parse_questions_from_claude_response
+        q = parse_questions_from_claude_response(blob)[0]
+        self.assertEqual(q["type"], "multiple_choice")
 
 if __name__ == "__main__":
     unittest.main()

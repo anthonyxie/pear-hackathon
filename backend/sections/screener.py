@@ -2,8 +2,8 @@
 from uuid import uuid4
 from claude_client import generate as llm
 from prompts import BASE_SYSTEM_PROMPT, build_prompt
-from utils import parse_questions_from_claude_response as _parse
-
+from utils import parse_questions_from_claude_response as _parse, \
+                  normalise_question_types         
 
 SECTION_NAME = "Screener"
 
@@ -32,6 +32,7 @@ def run(ctx: dict) -> dict:
 
     resp = llm(prompt, BASE_SYSTEM_PROMPT) or ""
     questions = _parse(resp) or _fallback()
+    questions  = normalise_question_types(questions) 
 
     return {
         "id": str(uuid4()),
