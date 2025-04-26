@@ -137,3 +137,13 @@ python -m unittest test_app.py
 3. **Questions not generating properly**:
    - The parsing logic may need adjustment based on Claude's actual response format
    - Check the API logs in the dashboard for Claude's raw responses
+
+## Scraping
+
+You can scrape DDG by adding `PROXY_ACCOUNT_NAME` and `PROXY_ACCOUNT_PASS` to your `.env` file. Then you can scrape a term by 
+```
+import web_scrap
+ddg_results = web_scrap.ddg_search(search_term)
+```
+
+here search_term is a string that will be searched for. There is a default parameter of `timeout=20` and `max_results=20`. The second parameter will be the maximum number of results returned.
