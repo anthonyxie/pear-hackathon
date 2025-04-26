@@ -17,6 +17,7 @@ interface Node {
     x: number;
     y: number;
   };
+  selected?: boolean;
 }
 
 interface Edge {

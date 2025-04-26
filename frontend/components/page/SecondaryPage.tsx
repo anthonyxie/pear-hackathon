@@ -3,13 +3,13 @@ import { getLayoutedElements } from "@/utils/utils";
 import { ReactFlowProvider, useEdgesState, useNodesState } from "@xyflow/react";
 import { useState } from "react";
 import { Node } from "@/utils/types";
+import EditableDetails from "@/components/page/EditableDetails";
 
 const PLACEHOLDER_NODES = [
   {
     id: "1",
     position: { x: 0, y: 0 },
     data: { label: "Screener" },
-    selected: true,
   },
   {
     id: "2",
@@ -48,18 +48,11 @@ const { nodes: INITIAL_NODES, edges: INITIAL_EDGES } = getLayoutedElements(
   { direction: "TB" }
 );
 
-const PLACEHOLDER_CONTENT: Record<string, string> = {
-  "1": "Description of 1",
-  "2": "Description of 2",
-  "2a": "Description of 2a",
-  "3": "Description of 3",
-  "4": "Description of 4",
-};
-
 export default function SecondaryPage() {
   const [nodes, setNodes, onNodesChange] = useNodesState(INITIAL_NODES);
   const [edges, setEdges, onEdgesChange] = useEdgesState(INITIAL_EDGES);
   const [selectedNodes, setSelectedNodes] = useState<Node[]>([]);
+
   return (
     <ReactFlowProvider>
       <div className="w-full h-full grid grid-cols-5">
@@ -76,12 +69,7 @@ export default function SecondaryPage() {
           </div>
         </div>
         <div className="col-span-3 h-full bg-background p-4">
-          <h1 className="text-2xl font-bold">
-            Title: {selectedNodes[0]?.data.label ?? ""}
-          </h1>
-          <p className="mt-2">
-            {PLACEHOLDER_CONTENT?.[selectedNodes[0]?.id] ?? ""}
-          </p>
+          <EditableDetails selectedNodes={selectedNodes} />
         </div>
       </div>
     </ReactFlowProvider>
