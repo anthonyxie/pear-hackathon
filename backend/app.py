@@ -7,6 +7,7 @@ from typing import Dict
 
 # ──────────────────────────────  3rd-party  ───────────────────────────────── #
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 from dotenv import load_dotenv
 
 # ────────────────────────────  project imports  ───────────────────────────── #
@@ -26,6 +27,7 @@ logging.basicConfig(
 logger = logging.getLogger("app")
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
 

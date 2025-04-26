@@ -1,5 +1,5 @@
 import Dagre from "@dagrejs/dagre";
-import { Node, Edge } from "./types";
+import { Node, Edge, Survey } from "./types";
 const getLayoutedElements = (
   nodes: Node[],
   edges: Edge[],
@@ -33,4 +33,38 @@ const getLayoutedElements = (
   };
 };
 
-export { getLayoutedElements };
+const getNodesFromSurvey = (survey: Survey | null) => {
+  if (!survey) {
+    return [];
+  }
+  return survey.sections.map((section) => {
+    return {
+      id: section.id,
+      data: {
+        questions: section.questions,
+        description: section.description,
+        label: section.name,
+        order: section.order,
+      },
+      position: { x: 0, y: 0 },
+    };
+  });
+};
+
+const getEdgesFromSurvey = (survey: Survey | null) => {
+  if (!survey) {
+    return [];
+  }
+
+  const edges: Edge[] = [];
+  for (let i = 0; i < survey.sections.length - 1; i++) {
+    edges.push({
+      id: `${survey.sections[i].id}-${survey.sections[i + 1].id}`,
+      source: survey.sections[i].id,
+      target: survey.sections[i + 1].id,
+    });
+  }
+  return edges;
+};
+
+export { getLayoutedElements, getNodesFromSurvey, getEdgesFromSurvey };

@@ -42,20 +42,6 @@ function FlowContent({
     setMounted(true);
   }, []);
 
-  // const onLayout = useCallback(
-  //   (direction: string) => {
-  //     const layouted = getLayoutedElements(nodes, edges, { direction });
-
-  //     setNodes([...layouted.nodes]);
-  //     setEdges([...layouted.edges]);
-
-  //     window.requestAnimationFrame(() => {
-  //       fitView();
-  //     });
-  //   },
-  //   [nodes, edges, fitView, setNodes, setEdges]
-  // );
-
   if (!mounted) {
     return null;
   }

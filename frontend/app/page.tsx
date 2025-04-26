@@ -4,8 +4,11 @@ import SecondaryPage from "@/components/page/SecondaryPage";
 import { useState } from "react";
 import { ModeToggle } from "@/components/ui/theme-button";
 import TestSurveyPage from "@/components/page/TestSurveyPage";
+import { Survey } from "@/utils/types";
 export default function ChatPage() {
   const [page, setPage] = useState<number>(0);
+  const [survey, setSurvey] = useState<Survey | null>(null);
+
   return (
     <div className="w-screen h-screen relative overflow-hidden">
       <div
@@ -13,7 +16,7 @@ export default function ChatPage() {
           page >= 1 ? "-translate-y-full" : "translate-y-0"
         }`}
       >
-        <InitialPage setPage={setPage} />
+        <InitialPage setPage={setPage} setSurvey={setSurvey} />
       </div>
       <div
         className={`absolute top-0 left-0 w-full h-full transition-transform duration-400 ease-in-out ${
@@ -24,7 +27,7 @@ export default function ChatPage() {
             : "translate-y-full"
         }`}
       >
-        <SecondaryPage />
+        <SecondaryPage survey={survey} />
       </div>
       <div
         className={`absolute top-0 left-0 w-full h-full transition-transform duration-400 ease-in-out ${
@@ -34,17 +37,7 @@ export default function ChatPage() {
         <TestSurveyPage />
       </div>
       <div className="absolute bottom-4 right-4 flex gap-2">
-        <button
-          onClick={() =>
-            setPage(
-              page === 0
-                ? 1
-                : page === 1
-                ? 2
-                : 1
-            )
-          }
-        >
+        <button onClick={() => setPage(page === 0 ? 1 : page === 1 ? 2 : 1)}>
           Toggle Page
         </button>
         <ModeToggle />

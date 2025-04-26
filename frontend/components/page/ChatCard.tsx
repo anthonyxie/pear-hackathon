@@ -4,19 +4,39 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
+import { Survey } from "@/utils/types";
+import axios from "axios";
+
 export default function ChatPage({
   setPage,
+  setSurvey,
 }: {
   setPage: (page: number) => void;
+  setSurvey: (survey: Survey) => void;
 }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const getSurvey = async () => {
+    const response = await axios.post("http://localhost:5000/api/surveys", {
+      acquiringCompany: "OpenAI",
+      targetCompany: "Windsurf",
+      surveyType: "consumer",
+      productCategories: ["IDE", "Code Completion", "Documentation Tools"],
+    });
+    const data = response.data;
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      setSurvey(data);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //simulate 5 second loading
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await getSurvey();
     setLoading(false);
     setPage(1);
   };
