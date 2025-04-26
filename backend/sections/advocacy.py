@@ -2,7 +2,7 @@
 from uuid import uuid4
 from claude_client import generate as llm
 from prompts import BASE_SYSTEM_PROMPT, build_prompt
-from app import parse_questions_from_claude_response as _parse
+from utils import parse_questions_from_claude_response as _parse
 
 SECTION_NAME = "Advocacy"
 
