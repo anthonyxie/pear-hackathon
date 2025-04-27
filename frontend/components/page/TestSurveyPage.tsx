@@ -1,7 +1,24 @@
-export default function TestSurveyPage() {
+"use client";
+import { useState } from "react";
+import "survey-core/survey-core.css";
+import { Survey } from "survey-react-ui";
+
+export default function SurveyComponent({ survey }: { survey: Survey | null }) {
+  const [surveyResults, setSurveyResults] = useState("");
+  const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
+
+  if (!survey) {
+    return <div>Loading survey...</div>;
+  }
   return (
-    <div className="w-full h-full bg-background">
-      <h1>Test Survey Page</h1>
-    </div>
+    <>
+      <Survey model={survey} id="surveyContainer" />
+      {isSurveyCompleted && (
+        <>
+          <p>Result JSON:</p>
+          <code style={{ whiteSpace: "pre" }}>{surveyResults}</code>
+        </>
+      )}
+    </>
   );
 }

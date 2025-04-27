@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { useCallback, useState, useRef, useEffect } from 'react';
-import 'survey-core/survey-core.css';
-import { Model } from 'survey-core';
-import { Survey } from 'survey-react-ui';
+import { useCallback, useState, useRef, useEffect } from "react";
+import "survey-core/survey-core.css";
+import { Model } from "survey-core";
+import { Survey } from "survey-react-ui";
 
 export default function SurveyComponent() {
   // Create state for the survey JSON and the survey model
@@ -18,13 +18,13 @@ export default function SurveyComponent() {
     const loadSurveyJson = async () => {
       try {
         // You can change this path to load different survey JSONs
-        const response = await fetch('/survey_js_format_v2.json');
+        const response = await fetch("/survey_js_format_v2.json");
         if (!response.ok) {
           throw new Error(`Failed to load survey: ${response.status}`);
         }
         const json = await response.json();
         setSurveyJson(json);
-        
+
         // Create a new survey model with the loaded JSON
         const newSurvey = new Model(json);
         newSurvey.onComplete.add((sender) => {
@@ -44,16 +44,14 @@ export default function SurveyComponent() {
   if (!survey) {
     return <div>Loading survey...</div>;
   }
-
+  console.log(survey);
   return (
     <>
       <Survey model={survey} id="surveyContainer" />
       {isSurveyCompleted && (
         <>
           <p>Result JSON:</p>
-          <code style={{ whiteSpace: 'pre' }}>
-            {surveyResults}
-          </code>
+          <code style={{ whiteSpace: "pre" }}>{surveyResults}</code>
         </>
       )}
     </>

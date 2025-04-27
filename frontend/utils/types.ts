@@ -10,25 +10,24 @@ interface Survey {
   id: string;
   sections: Section[];
 }
-
-interface Section {
-  name: string;
-  description: string;
-  id: string;
-  isActive: boolean;
-  questions: Question[];
-  order: number;
-}
-
 interface Question {
   id: string;
   text: string;
-  type: "text" | "multiple_choice" | "multiple_select" | "scale";
+  type: string;
   options: string[] | null;
-  order: number;
   required: boolean;
+  order: number;
+  termination_option?: string;
 }
 
+interface Section {
+  id: string;
+  name: string;
+  description: string;
+  isActive: boolean;
+  order: number;
+  questions: Question[];
+}
 interface Node {
   id: string;
   data: {
