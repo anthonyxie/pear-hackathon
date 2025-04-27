@@ -232,6 +232,7 @@ function QuestionCard({
         question.options && (
           <CardContent className="-mt-4">
             <QuestionOptions
+              title={"Options"}
               options={question.options}
               onOptionsChange={handleOptionsChange}
             />
