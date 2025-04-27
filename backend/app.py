@@ -148,7 +148,7 @@ def build_tree_route():
         survey,
         product_name=_latest_data["targetCompany"],
         product_description=_latest_pipeline.ctx["product_description"],
-        target_audience=_latest_data["targetCompany"],
+        target_audience=_latest_data["targetAudience"],
         competitor_products=_latest_pipeline.ctx["competitors"]
     )
     vis_tree = build_visual_tree(survey, tree)
