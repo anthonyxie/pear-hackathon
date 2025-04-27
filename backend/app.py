@@ -7,14 +7,18 @@ import logging
 from typing import Dict
 
 # ──────────────────────────────  3rd-party  ───────────────────────────────── #
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, abort
 from flask_cors import CORS
 from dotenv import load_dotenv
 
 # ────────────────────────────  project imports  ───────────────────────────── #
 from config import PORT, iso_now
-from pipeline import SurveyPipeline                    # ← centralises section logic
-from utils import parse_questions_from_claude_response # ← import parser helper
+from pipeline import SurveyPipeline            # ← NEW: centralises section logic
+
+from utils import parse_questions_from_claude_response  # ← add this line
+
+from build_tree import build_tree, build_visual_tree
+
 
 # ╭──────────────────────────  basic setup / logging  ────────────────────────╮
 load_dotenv()
@@ -36,8 +40,9 @@ SURVEY_TYPE_ENTERPRISE = "enterprise"
 
 # in-memory “DB” for demo/testing
 surveys: Dict[str, Dict] = {}
-
-
+_latest_survey = None
+_latest_data = None
+_latest_pipeline = None
 # ────────────────────────────────  routes  ───────────────────────────────── #
 @app.route("/api/surveys", methods=["POST"])
 def create_survey():
@@ -65,8 +70,10 @@ def create_survey():
         return jsonify({"error": "Missing parameters"}), 400
     if data["surveyType"] not in {SURVEY_TYPE_CONSUMER, SURVEY_TYPE_ENTERPRISE}:
         return jsonify({"error": "Invalid surveyType"}), 400
-
+    global _latest_data
+    _latest_data = data
     try:
+        global _latest_pipeline
         pipeline = SurveyPipeline(
             acquirer           = data["acquiringCompany"],
             target             = data["targetCompany"],
@@ -74,7 +81,11 @@ def create_survey():
             product_categories = data["productCategories"],
             target_audience    = data["targetAudience"],   # ← NEW
         )
-        survey = pipeline.run()          # ← builds all sections
+        survey = pipeline.run()          # ← builds all 8 sections
+        _latest_pipeline = pipeline
+        # allow reassigning the global pointer
+        global _latest_survey
+        _latest_survey = survey["id"]
         surveys[survey["id"]] = survey   # cache for retrieval
 
         return jsonify(survey), 201
@@ -106,6 +117,45 @@ def health():
 def on_error(exc):                       # pragma: no cover
     logger.exception("Unhandled exception")
     return jsonify({"error": "Internal server error"}), 500
+
+@app.route("/build_tree", methods=["POST"])
+def build_tree_route():
+    global _latest_survey
+
+    # 1) grab optional id
+    if request.is_json:
+        id_param = request.get_json().get("id")
+    else:
+        id_param = request.form.get("id")
+
+    # 2) must have _latest_survey or incoming id
+    if _latest_survey is None and not id_param:
+        abort(400, description="No survey available to build tree from.")
+
+    # 3) if they passed an id, validate and update pointer
+    if id_param:
+        if id_param not in surveys:
+            abort(400, description=f"Survey with id '{id_param}' not found.")
+        _latest_survey = id_param
+
+    # 4) load the survey
+    survey = surveys[_latest_survey]
+
+    # 5) build the routing tree (with the right signature!)
+    global _latest_data
+    global _latest_pipeline
+    tree = build_tree(
+        survey,
+        product_name=_latest_data["targetCompany"],
+        product_description=_latest_pipeline.ctx["product_description"],
+        target_audience=_latest_data["targetCompany"],
+        competitor_products=_latest_pipeline.ctx["competitors"]
+    )
+    vis_tree = build_visual_tree(survey, tree)
+
+    # 6) return 200 OK
+    return jsonify(vis_tree), 200
+
 
 
 # ────────────────────────────  entry-point  ──────────────────────────────── #
