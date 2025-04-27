@@ -18,7 +18,7 @@ export default function SurveyComponent() {
     const loadSurveyJson = async () => {
       try {
         // You can change this path to load different survey JSONs
-        const response = await fetch('/test_logic_survey_v2.json');
+        const response = await fetch('/survey_js_format_v2.json');
         if (!response.ok) {
           throw new Error(`Failed to load survey: ${response.status}`);
         }

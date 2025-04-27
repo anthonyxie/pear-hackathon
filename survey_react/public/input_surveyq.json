@@ -1,0 +1,966 @@
+{
+  "createdAt": "2025-04-26T23:38:02.715069",
+  "description": "Survey for OpenAI → WINDSURF",
+  "id": "be21b772-837e-46a4-b025-c64c3ee94173",
+  "sections": [
+    {
+      "description": "Initial eligibility questions",
+      "id": "2e133f79-bab5-4380-bbdf-3bba05396893",
+      "isActive": true,
+      "name": "Screener",
+      "order": 1,
+      "questions": [
+        {
+          "id": "37f2df8e-1361-4df5-a85d-77dbb2ffa518",
+          "options": [
+            "Executive leadership",
+            "Senior management",
+            "Middle management",
+            "Technical staff",
+            "Administrative support",
+            "External consultant/partner",
+            "Other (please specify)"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "What is your current role or position within the organization?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "da817c1e-035f-47db-9b33-38cf683925b2",
+          "options": [
+            "Less than 1 year",
+            "1-2 years",
+            "3-5 years",
+            "6-10 years",
+            "More than 10 years",
+            "I have not been involved with WINDSURF"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "How many years have you been involved with WINDSURF products or services?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "90cd7667-b855-449a-967a-f31662b4f1e3",
+          "options": [
+            "WINDSURF Core Platform",
+            "WINDSURF Enterprise Suite",
+            "WINDSURF Developer Tools",
+            "WINDSURF Analytics",
+            "WINDSURF Integration Services",
+            "WINDSURF Cloud Solutions",
+            "None of the above"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "Which of the following WINDSURF offerings are you familiar with? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "f62465ee-e252-4440-b81b-08e196b026f9",
+          "options": [
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Quarterly",
+            "Rarely",
+            "Never"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "How frequently do you interact with WINDSURF products or team members?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "ac9498a1-8b3f-41e6-9795-f6ca41ff4804",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "On a scale of 1-5, how knowledgeable would you say you are about WINDSURF's market position and competitive landscape?",
+          "type": "multiple_choice"
+        }
+      ]
+    },
+    {
+      "description": "Measures baseline familiarity",
+      "id": "ea9f181a-7378-44f7-9267-c820a29c0682",
+      "isActive": true,
+      "name": "Awareness",
+      "order": 2,
+      "questions": [
+        {
+          "id": "de60d19a-9965-4ebf-8815-1e1acf738334",
+          "options": [
+            "For core business processes",
+            "For specialized departmental needs",
+            "For client/customer management",
+            "For data analytics and reporting",
+            "For integration with other systems",
+            "For development and testing",
+            "For occasional reference",
+            "I don't personally use WINDSURF products"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "How do you primarily use WINDSURF products in your daily operations? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "18364f9c-f66c-4a89-aac0-5e8cf17fa73c",
+          "options": [
+            "Desktop application",
+            "Web portal",
+            "Mobile app",
+            "Command line interface",
+            "API integration",
+            "Third-party connector",
+            "Administration console",
+            "I don't access WINDSURF directly"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "Which interface do you most frequently use to access WINDSURF solutions?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "68804931-5dd9-4e82-8ae0-34c1c9d52127",
+          "options": [
+            "Today",
+            "Within the past week",
+            "Within the past month",
+            "Within the past quarter",
+            "Within the past year",
+            "More than a year ago",
+            "I have never used a WINDSURF product"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "When was the last time you used a WINDSURF product or service?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "c1684929-d74d-4fd7-95c5-4a7e3b06876a",
+          "options": [
+            "Dashboard customization",
+            "Real-time analytics",
+            "Workflow automation",
+            "Third-party integrations",
+            "Security protocols",
+            "Mobile functionality",
+            "Cloud synchronization",
+            "Collaborative tools",
+            "Performance monitoring",
+            "None of these features"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "Which of the following WINDSURF features do you find most valuable? (Select up to 3)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "b0eea6ef-911b-44c7-9192-bf04207b8b85",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "On a scale of 1-5, how confident are you in explaining WINDSURF's key differentiators to a colleague?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "f3f20383-56e1-4ef1-9e68-8ac4d896cbeb",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "order": 6,
+          "required": true,
+          "text": "Have you participated in any WINDSURF training programs or certification courses?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "2926ed0e-a3a9-4854-b52e-b0ab4c87c560",
+          "options": null,
+          "order": 7,
+          "required": true,
+          "text": "What specific challenges or limitations have you encountered when using WINDSURF products?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "description": "Explores depth & frequency of product use",
+      "id": "b908af41-2e05-4dcc-82c5-cd5b47831e28",
+      "isActive": true,
+      "name": "Usage",
+      "order": 3,
+      "questions": [
+        {
+          "id": "12f15183-9c6c-404c-b572-2aa304d98fb3",
+          "options": [
+            "1-10 users",
+            "11-50 users",
+            "51-200 users",
+            "201-500 users",
+            "501-1000 users",
+            "1000+ users"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "How many users in your organization actively work with WINDSURF products on a regular basis?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "3a9771ac-f96a-47ad-ba0c-16701d0fdfc3",
+          "options": [
+            "Less than 6 months",
+            "6-12 months",
+            "1-2 years",
+            "3-5 years",
+            "More than 5 years"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "How long has your organization been using WINDSURF products or services?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "77a329ba-9e1e-4709-84de-588681662b82",
+          "options": [
+            "IT/Engineering",
+            "Sales",
+            "Marketing",
+            "Finance",
+            "Customer Service",
+            "Operations",
+            "Human Resources",
+            "Research & Development",
+            "Executive team",
+            "Other (please specify)"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "Which departments in your organization currently use WINDSURF solutions? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "771e3aa2-7016-4b09-8081-d6d27b13c892",
+          "options": [
+            "Less than 25%",
+            "25-50%",
+            "51-75%",
+            "More than 75%",
+            "Unsure"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "What percentage of your potential use cases for WINDSURF products are you currently utilizing?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "8d096d33-08c2-4171-b732-e16ec2e5dfb2",
+          "options": [
+            "Developed in-house solution",
+            "Oracle",
+            "SAP",
+            "Microsoft",
+            "IBM",
+            "Salesforce",
+            "ServiceNow",
+            "Workday",
+            "None",
+            "Other (please specify)"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "Which alternative solutions or competitors did you evaluate before selecting WINDSURF? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "58a511df-3889-4187-be03-6e4830639ca0",
+          "options": [
+            "Weekly",
+            "Monthly",
+            "Quarterly",
+            "Annually",
+            "Only when issues arise",
+            "Never"
+          ],
+          "order": 6,
+          "required": true,
+          "text": "How frequently does your team interact with WINDSURF's support or customer success teams?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "cf0ce982-6a2d-4e92-bd13-4c96fb81e182",
+          "options": [
+            "Core business operations",
+            "Department-specific functions",
+            "Customer-facing applications",
+            "Data analysis and reporting",
+            "System integration",
+            "Development and testing",
+            "Other (please specify)"
+          ],
+          "order": 7,
+          "required": true,
+          "text": "What is your organization's primary use case for WINDSURF products?",
+          "type": "multiple_select"
+        }
+      ]
+    },
+    {
+      "description": "Captures satisfaction & pain points",
+      "id": "cbc61427-1a70-4763-a7ff-fa2ed5beccb6",
+      "isActive": true,
+      "name": "Voice of Customer",
+      "order": 4,
+      "questions": [
+        {
+          "id": "ea3f3e3f-8887-442a-9a3a-44e2920bc122",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "How would you rate your overall satisfaction with WINDSURF products?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "76ed39a5-a452-440f-8ed7-6e2dc778044c",
+          "options": [
+            "Slow performance",
+            "Difficult user interface",
+            "Limited integration capabilities",
+            "Inadequate reporting tools",
+            "Insufficient customer support",
+            "Lack of customization options",
+            "Unreliable uptime",
+            "Complex implementation process",
+            "Outdated features",
+            "High cost relative to value",
+            "Security concerns",
+            "None"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "What are the primary pain points you experience when using WINDSURF solutions? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "257ed610-6a21-432b-8ed1-c63cd0fb53a7",
+          "options": [
+            "User interface/experience",
+            "Performance/speed",
+            "Reporting capabilities",
+            "Integration with third-party systems",
+            "Mobile access",
+            "Customization options",
+            "Security features",
+            "Cloud capabilities",
+            "Workflow automation",
+            "Analytics tools",
+            "Customer support portal",
+            "Documentation/training resources"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "Which specific WINDSURF features or functionality would you most like to see improved? (Select up to 3)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "1c5fa8b8-34b4-43be-bbe4-6bed8f2163cd",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "How would you rate the quality of customer support provided by the WINDSURF team?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "191cc49d-4000-4344-b22e-6d46a786adb6",
+          "options": [
+            "Yes - exceeded expectations",
+            "Yes - met expectations",
+            "Somewhat - partially met expectations",
+            "No - below expectations",
+            "Too soon to determine",
+            "Unsure"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "Has your organization achieved the expected return on investment (ROI) from implementing WINDSURF solutions?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "2f7642e0-9062-475f-906a-7f3ec8f7162c",
+          "options": [
+            "AI/machine learning capabilities",
+            "Advanced analytics",
+            "Expanded API functionality",
+            "Enhanced mobile experience",
+            "Industry-specific templates",
+            "Improved security features",
+            "Better third-party integrations",
+            "Simplified user interface",
+            "Automated workflow tools",
+            "Enhanced customization options",
+            "Other (please specify)"
+          ],
+          "order": 6,
+          "required": true,
+          "text": "What additional features or capabilities would provide the most value to your organization? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "5ce717d2-bb05-4f58-961b-e6d6efa65c53",
+          "options": null,
+          "order": 7,
+          "required": true,
+          "text": "What is the most significant challenge your organization faces when utilizing WINDSURF products?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "description": "Net Promoter / referral intent",
+      "id": "fc54e13f-2278-452d-bd2d-07e84e8f8b1c",
+      "isActive": true,
+      "name": "Advocacy",
+      "order": 5,
+      "questions": [
+        {
+          "id": "dc25b973-b351-49b7-a7d5-bdad08705883",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "How likely are you to recommend WINDSURF products or services to colleagues or industry peers?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "352a412b-8254-4a92-8466-7805397db810",
+          "options": [
+            "Product features/functionality",
+            "Ease of use",
+            "Integration capabilities",
+            "Customer support quality",
+            "Implementation process",
+            "Technical expertise",
+            "Pricing/value",
+            "Industry knowledge",
+            "Innovation/R&D",
+            "Reliability/uptime",
+            "Customization options",
+            "None of the above"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "What do you believe are WINDSURF's primary competitive advantages? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "436cbe62-16c1-40f7-9930-8f061973f063",
+          "options": [
+            "Significantly better",
+            "Somewhat better",
+            "About the same",
+            "Somewhat worse",
+            "Significantly worse",
+            "Haven't used or evaluated alternatives"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "How would you rate WINDSURF compared to similar solutions you've used or evaluated?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "0032218a-ff25-4b55-8fe8-169dec526e83",
+          "options": [
+            "Yes",
+            "No",
+            "Maybe - depends on the circumstances"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "Would you be willing to serve as a reference for WINDSURF in discussions with potential customers?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "a2331dbd-0ea2-4c33-8146-37c841899d2b",
+          "options": [
+            "Significant positive impact",
+            "Moderate positive impact",
+            "Minimal impact",
+            "Moderate negative impact",
+            "Significant negative impact",
+            "Too soon to determine"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "How has WINDSURF impacted your organization's operational efficiency?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "6f1037f6-847d-4232-9f2d-4b1303f48590",
+          "options": [
+            "Definitely will renew/expand",
+            "Likely will renew/expand",
+            "Undecided",
+            "Likely will reduce usage",
+            "Definitely will not renew",
+            "Not applicable to my role"
+          ],
+          "order": 6,
+          "required": true,
+          "text": "How likely is your organization to renew or expand its WINDSURF implementations in the next 12 months?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "19eca683-5d83-40f0-a98a-c50f041ab9da",
+          "options": null,
+          "order": 7,
+          "required": true,
+          "text": "What is the most compelling reason you would recommend WINDSURF to others in your industry?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "description": "Key purchase drivers & criteria",
+      "id": "afc0d94e-d1b8-427d-b0ed-dcceb043e68b",
+      "isActive": true,
+      "name": "KPC",
+      "order": 6,
+      "questions": [
+        {
+          "id": "4902eb47-e767-4b27-9d12-215deaaa536b",
+          "options": [
+            "Cost/pricing structure",
+            "Product features/functionality",
+            "Ease of implementation",
+            "Integration capabilities",
+            "Customer support reputation",
+            "Vendor reputation/stability",
+            "Technical capabilities",
+            "Scalability",
+            "Security features",
+            "Industry-specific solutions",
+            "Recommendation from consultant/peer",
+            "Existing relationship with vendor"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "What were the primary factors that influenced your organization's decision to select WINDSURF? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "28277164-e008-4c44-b00c-ad764d2639e9",
+          "options": [
+            "Product reliability/uptime",
+            "Cost-effectiveness",
+            "Ongoing support quality",
+            "Integration with existing systems",
+            "Performance/speed",
+            "Customization options",
+            "User experience/interface",
+            "Mobile capabilities",
+            "Security features",
+            "Analytics/reporting features"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "How would you rank the following factors in terms of their importance to your continued use of WINDSURF? (Rank your top 3)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "23a94b75-57c2-4d74-8563-ae9157b9a028",
+          "options": [
+            "Reduced operational costs",
+            "Improved efficiency/productivity",
+            "Enhanced data accuracy",
+            "Better customer service",
+            "Increased revenue",
+            "Improved compliance/security",
+            "Faster time-to-market",
+            "Better decision-making",
+            "Reduced IT complexity",
+            "Improved employee satisfaction",
+            "No measurable benefits yet",
+            "Other (please specify)"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "What measurable benefits has your organization realized through implementing WINDSURF solutions? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "f60b8bd1-5824-440c-9f74-e7cd55e11b8a",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "On a scale of 1-5, how well has WINDSURF met your expectations in the following areas?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "fb31c944-26cb-45a7-b818-382c67b49bc7",
+          "options": [
+            "System integration difficulties",
+            "Data migration issues",
+            "User adoption resistance",
+            "Inadequate training/documentation",
+            "Configuration complexity",
+            "Technical performance issues",
+            "Timeline delays",
+            "Budget overruns",
+            "Insufficient internal resources",
+            "Inadequate vendor support",
+            "Organizational change management",
+            "No significant challenges"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "What were the most significant challenges you faced during WINDSURF implementation? (Select up to 3)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "9c6023d7-3d0f-4ee9-a053-961ea0b28b02",
+          "options": [
+            "Yes",
+            "No"
+          ],
+          "order": 6,
+          "required": true,
+          "text": "Do you currently use any complementary or competing solutions alongside WINDSURF?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "675e0363-2cc6-451b-accc-6935d2f63a57",
+          "options": [
+            "Cost/ROI",
+            "New feature availability",
+            "Performance improvements",
+            "Integration with new systems",
+            "Better service/support",
+            "Enhanced security",
+            "Improved user experience",
+            "Simplified administration",
+            "Cloud/mobile capabilities",
+            "Industry-specific functionality",
+            "Competitive alternatives",
+            "Executive mandate"
+          ],
+          "order": 7,
+          "required": true,
+          "text": "What primary criteria would you use when evaluating whether to expand your organization's use of WINDSURF in the future? (Select all that apply)",
+          "type": "multiple_select"
+        }
+      ]
+    },
+    {
+      "description": "Discovery & buying channels",
+      "id": "768c821b-5cf6-47f5-be2e-5ebe25f88b10",
+      "isActive": true,
+      "name": "Channel",
+      "order": 7,
+      "questions": [
+        {
+          "id": "c4e9641a-bed2-42c2-bf93-9170b2622cee",
+          "options": [
+            "Online search",
+            "Industry tradeshow/conference",
+            "Referral from colleague/peer",
+            "Vendor recommendation",
+            "Technology analyst report (e.g.",
+            "Gartner",
+            "Forrester)",
+            "Direct outreach from WINDSURF sales team",
+            "Social media",
+            "Professional association",
+            "We were already familiar with the company",
+            "Other (please specify)"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "How did your organization initially discover WINDSURF solutions? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "8b4ad9c7-b240-40c6-bcb2-8a49e8e53a64",
+          "options": [
+            "C-level executives",
+            "IT leadership",
+            "Department heads/business unit leaders",
+            "Technical team members",
+            "End users",
+            "External consultants",
+            "Procurement team",
+            "Security/compliance team",
+            "Finance team",
+            "Other (please specify)"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "Who were the key influencers in your organization's decision to purchase WINDSURF solutions? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "c16dadf4-8492-4fd3-a2de-676fe6a7b12d",
+          "options": [
+            "Less than 1 month",
+            "1-3 months",
+            "4-6 months",
+            "7-12 months",
+            "More than 12 months",
+            "Don't know/Not involved in the process"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "What was the typical length of your sales cycle from initial discovery to purchase of WINDSURF solutions?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "52b20c81-c188-4bca-a109-6b889ac309fc",
+          "options": [
+            "RFI (Request for Information)",
+            "RFP (Request for Proposal)",
+            "Vendor demonstrations/presentations",
+            "Proof of concept/trial period",
+            "Reference checks",
+            "Security/compliance review",
+            "Legal review",
+            "Competitive analysis",
+            "Executive approval",
+            "Procurement department involvement",
+            "None of these steps",
+            "Other (please specify)"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "Which formal procurement steps did your organization follow when purchasing WINDSURF? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "cb64611b-8ea3-485a-af49-a45d99f1ce34",
+          "options": [
+            "Monthly subscription",
+            "Annual subscription",
+            "2-3 year term",
+            "More than 3-year term",
+            "Perpetual license",
+            "Custom agreement",
+            "Not sure/Don't know"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "What is the length of your current contract with WINDSURF?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "a04a9237-894c-47be-ab9c-07d50f3e4936",
+          "options": [
+            "Formal ROI analysis",
+            "Total cost of ownership calculation",
+            "Feature-by-feature comparison with alternatives",
+            "Industry benchmark comparison",
+            "We didn't formally evaluate pricing",
+            "Not involved in pricing discussions",
+            "Other (please specify)"
+          ],
+          "order": 6,
+          "required": true,
+          "text": "How did you evaluate WINDSURF pricing compared to alternatives during your procurement process?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "79a5f5c9-d1a0-40ae-a79d-fd783d11b29d",
+          "options": [
+            "Product demonstrations",
+            "Free trial/sandbox access",
+            "Customer case studies/testimonials",
+            "Technical documentation",
+            "ROI/business value assessments",
+            "Analyst reports",
+            "Product roadmap discussions",
+            "Conversations with WINDSURF team",
+            "Peer recommendations",
+            "None of these resources",
+            "Other (please specify)"
+          ],
+          "order": 7,
+          "required": true,
+          "text": "What materials or resources were most influential in your evaluation of WINDSURF? (Select up to 3)",
+          "type": "multiple_select"
+        }
+      ]
+    },
+    {
+      "description": "Perceptions & personality of the company",
+      "id": "29596aa6-e114-4d03-a1d1-a53c4a275862",
+      "isActive": true,
+      "name": "Brand",
+      "order": 8,
+      "questions": [
+        {
+          "id": "8f6bd3de-e479-465a-9d82-d301fdae5dec",
+          "options": [
+            "Intuitive",
+            "Modern",
+            "Cluttered",
+            "Professional",
+            "Outdated",
+            "Clean",
+            "Confusing",
+            "Minimalist",
+            "Sophisticated",
+            "Inconsistent",
+            "Elegant",
+            "Technical"
+          ],
+          "order": 1,
+          "required": true,
+          "text": "How would you describe WINDSURF's product design and user interface? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "0356bbb1-e54c-4c3b-a324-7beba27f7456",
+          "options": [
+            "Confidence",
+            "Frustration",
+            "Satisfaction",
+            "Confusion",
+            "Relief",
+            "Anxiety",
+            "Excitement",
+            "Boredom",
+            "Trust",
+            "Overwhelmed",
+            "Empowered",
+            "Indifference"
+          ],
+          "order": 2,
+          "required": true,
+          "text": "Which of the following emotions best describes your experience when using WINDSURF products? (Select up to 3)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "45eb5947-3711-4485-99fa-aa727a8f324e",
+          "options": [
+            "Innovative",
+            "Conservative",
+            "Reliable",
+            "Outdated",
+            "Trustworthy",
+            "Complicated",
+            "Expert",
+            "Distant",
+            "Responsive",
+            "Generic",
+            "Forward-thinking",
+            "Bureaucratic"
+          ],
+          "order": 3,
+          "required": true,
+          "text": "How would you characterize WINDSURF's brand personality? (Select all that apply)",
+          "type": "multiple_select"
+        },
+        {
+          "id": "f0242ee1-f79a-41a0-ab18-7f4ec29b0999",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "order": 4,
+          "required": true,
+          "text": "On a scale of 1-5, how well does WINDSURF's visual identity (logo, colors, design elements) align with your expectations for a leading technology solution?",
+          "type": "multiple_choice"
+        },
+        {
+          "id": "cc267a0d-9b6e-45bd-92b3-94e5268fa33f",
+          "options": [
+            "Apple",
+            "Microsoft",
+            "IBM",
+            "Oracle",
+            "Salesforce",
+            "SAP",
+            "Adobe",
+            "Google",
+            "Amazon",
+            "None of these"
+          ],
+          "order": 5,
+          "required": true,
+          "text": "Which of the following brands do you feel WINDSURF most closely resembles in terms of image and reputation?",
+          "type": "multiple_select"
+        },
+        {
+          "id": "df033db6-1bba-45a8-a583-318ed3838cc3",
+          "options": null,
+          "order": 6,
+          "required": true,
+          "text": "Which three words would you use to describe WINDSURF to someone unfamiliar with the product?",
+          "type": "text"
+        },
+        {
+          "id": "6a98b955-6da2-4124-95d9-108f610e9f5e",
+          "options": [
+            "Much more professional",
+            "Somewhat more professional",
+            "About the same",
+            "Somewhat less professional",
+            "Much less professional",
+            "Unable to compare"
+          ],
+          "order": 7,
+          "required": true,
+          "text": "How does WINDSURF's overall presentation compare to its competitors?",
+          "type": "multiple_choice"
+        }
+      ]
+    }
+  ],
+  "title": "WINDSURF Due Diligence Survey",
+  "type": "enterprise",
+  "updatedAt": "2025-04-26T23:38:02.715099"
+}
