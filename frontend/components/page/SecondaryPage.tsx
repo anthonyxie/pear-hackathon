@@ -8,19 +8,40 @@ import { ReactFlowProvider, useEdgesState, useNodesState } from "@xyflow/react";
 import { useEffect, useState } from "react";
 import { Edge, Node, Question, Survey } from "@/utils/types";
 import EditableDetails from "@/components/page/EditableDetails";
+import { Model, Survey as SurveyJSType } from "survey-react-ui";
+import { useRouter } from "next/navigation";
+import convertToSurveyJS from "@/utils/convert";
 
-export default function SecondaryPage({ survey }: { survey: Survey | null }) {
+export default function SecondaryPage({
+  survey,
+  setPage,
+  setSurveyModel,
+}: {
+  survey: Survey | null;
+  setPage: (page: number) => void;
+  setSurveyModel: (surveyModel: SurveyJSType) => void;
+}) {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
   const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
 
-  const setNodeProperty = (nodeId: string, property: string, value: any) => {
-    const node = nodes.find((node) => node.id === nodeId);
-  };
-
   const selectedNode = nodes.find((node) => selectedNodes.includes(node.id));
   console.log(selectedNode);
   console.log(selectedNodes);
+  const router = useRouter();
+
+  const handleTestSurvey = async () => {
+    if (survey) {
+      const newSurvey = {
+        ...survey,
+        sections: nodes.map((node) => node.data.section),
+      };
+      const surveyJson = convertToSurveyJS(newSurvey);
+      const surveyModel = new Model(surveyJson);
+      setSurveyModel(surveyModel);
+      setPage(2);
+    }
+  };
 
   useEffect(() => {
     if (survey) {
@@ -140,6 +161,9 @@ export default function SecondaryPage({ survey }: { survey: Survey | null }) {
             />
           ) : null}
         </div>
+      </div>
+      <div className="absolute bottom-5 right-16 flex gap-2">
+        <button onClick={handleTestSurvey}>Test Survey</button>
       </div>
     </ReactFlowProvider>
   );
