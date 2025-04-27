@@ -1,0 +1,373 @@
+{
+  "title": "Comprehensive Survey Example",
+  "description": "A survey demonstrating conditional questions and multi-page panels",
+  "logoPosition": "right",
+  "completedHtml": "<h3>Thank you for completing the survey!</h3><p>Your responses have been recorded.</p>",
+  "pages": [
+    {
+      "name": "selectionPage",
+      "title": "User Type Selection",
+      "description": "Please select your user type to continue with appropriate questions",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "userType",
+          "title": "What type of user are you?",
+          "isRequired": true,
+          "choices": [
+            { "value": "student", "text": "Student" },
+            { "value": "professional", "text": "Professional" },
+            { "value": "retired", "text": "Retired" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "studentBasicInfoPage",
+      "title": "Student Basic Information",
+      "visibleIf": "{userType} = 'student'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "studentBasicInfoPanel",
+          "title": "Basic Information",
+          "elements": [
+            {
+              "type": "dropdown",
+              "name": "educationLevel",
+              "title": "What is your education level?",
+              "isRequired": true,
+              "choices": [
+                "High School", 
+                "Bachelor's", 
+                "Master's", 
+                "PhD"
+              ]
+            },
+            {
+              "type": "text",
+              "name": "schoolName",
+              "title": "What is your school/university name?",
+              "isRequired": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "studentAcademicsPage",
+      "title": "Student Academic Information",
+      "visibleIf": "{userType} = 'student'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "studentAcademicsPanel",
+          "title": "Academic Information",
+          "elements": [
+            {
+              "type": "checkbox",
+              "name": "subjects",
+              "title": "What subjects are you studying?",
+              "isRequired": true,
+              "choices": [
+                "Computer Science",
+                "Engineering",
+                "Business",
+                "Arts",
+                "Science",
+                "Medicine"
+              ],
+              "hasOther": true,
+              "otherText": "Other (please specify)"
+            },
+            {
+              "type": "text",
+              "name": "graduationYear",
+              "title": "Expected graduation year:",
+              "inputType": "number",
+              "isRequired": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "studentGoalsPage",
+      "title": "Student Career Goals",
+      "visibleIf": "{userType} = 'student'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "studentGoalsPanel",
+          "title": "Career Goals",
+          "elements": [
+            {
+              "type": "comment",
+              "name": "careerGoals",
+              "title": "What are your career goals after graduation?",
+              "isRequired": true
+            },
+            {
+              "type": "rating",
+              "name": "educationSatisfaction",
+              "title": "How satisfied are you with your education so far?",
+              "rateMin": 1,
+              "rateMax": 5,
+              "minRateDescription": "Not satisfied",
+              "maxRateDescription": "Very satisfied"
+            }
+          ]
+        }
+      ]
+    },
+    
+
+    {
+      "name": "professionalBasicInfoPage",
+      "title": "Professional Employment Information",
+      "visibleIf": "{userType} = 'professional'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "professionalBasicInfoPanel",
+          "title": "Employment Information",
+          "elements": [
+            {
+              "type": "dropdown",
+              "name": "industry",
+              "title": "What industry do you work in?",
+              "isRequired": true,
+              "choices": [
+                "Technology",
+                "Healthcare",
+                "Finance",
+                "Education",
+                "Manufacturing",
+                "Retail",
+                "Government"
+              ],
+              "hasOther": true,
+              "otherText": "Other (please specify)"
+            },
+            {
+              "type": "text",
+              "name": "jobTitle",
+              "title": "What is your job title?",
+              "isRequired": true
+            },
+            {
+              "type": "text",
+              "name": "companyName",
+              "title": "Company name:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "professionalExperiencePage",
+      "title": "Professional Work Experience",
+      "visibleIf": "{userType} = 'professional'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "professionalExperiencePanel",
+          "title": "Work Experience",
+          "elements": [
+            {
+              "type": "text",
+              "name": "yearsExperience",
+              "title": "How many years of experience do you have in your field?",
+              "inputType": "number",
+              "isRequired": true
+            },
+            {
+              "type": "boolean",
+              "name": "isManager",
+              "title": "Do you manage other employees?",
+              "labelTrue": "Yes",
+              "labelFalse": "No"
+            },
+            {
+              "type": "text",
+              "name": "teamSize",
+              "title": "How many people do you manage?",
+              "inputType": "number",
+              "visibleIf": "{isManager} = true"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "professionalSatisfactionPage",
+      "title": "Professional Job Satisfaction",
+      "visibleIf": "{userType} = 'professional'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "professionalSatisfactionPanel",
+          "title": "Job Satisfaction",
+          "elements": [
+            {
+              "type": "rating",
+              "name": "jobSatisfaction",
+              "title": "How satisfied are you with your current job?",
+              "rateMin": 1,
+              "rateMax": 5,
+              "minRateDescription": "Not satisfied",
+              "maxRateDescription": "Very satisfied"
+            },
+            {
+              "type": "comment",
+              "name": "careerGoals",
+              "title": "What are your career goals for the next 5 years?"
+            }
+          ]
+        }
+      ]
+    },
+    
+
+    {
+      "name": "retirementBasicInfoPage",
+      "title": "Previous Career Information",
+      "visibleIf": "{userType} = 'retired'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "retirementBasicInfoPanel",
+          "title": "Previous Career",
+          "elements": [
+            {
+              "type": "text",
+              "name": "previousOccupation",
+              "title": "What was your previous occupation?",
+              "isRequired": true
+            },
+            {
+              "type": "dropdown",
+              "name": "previousIndustry",
+              "title": "What industry did you work in?",
+              "isRequired": true,
+              "choices": [
+                "Technology",
+                "Healthcare",
+                "Finance",
+                "Education",
+                "Manufacturing",
+                "Retail",
+                "Government"
+              ],
+              "hasOther": true,
+              "otherText": "Other (please specify)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "retirementActivitiesPage",
+      "title": "Retirement Activities",
+      "visibleIf": "{userType} = 'retired'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "retirementActivitiesPanel",
+          "title": "Retirement Activities",
+          "elements": [
+            {
+              "type": "checkbox",
+              "name": "retirementActivities",
+              "title": "What activities do you enjoy in retirement?",
+              "isRequired": true,
+              "choices": [
+                "Travel",
+                "Gardening",
+                "Reading",
+                "Volunteering",
+                "Sports",
+                "Learning new skills",
+                "Spending time with family"
+              ],
+              "hasOther": true,
+              "otherText": "Other (please specify)"
+            },
+            {
+              "type": "text",
+              "name": "retirementYears",
+              "title": "How many years have you been retired?",
+              "inputType": "number"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "retirementSatisfactionPage",
+      "title": "Retirement Satisfaction",
+      "visibleIf": "{userType} = 'retired'",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "retirementSatisfactionPanel",
+          "title": "Retirement Satisfaction",
+          "elements": [
+            {
+              "type": "rating",
+              "name": "retirementSatisfaction",
+              "title": "How satisfied are you with your retirement?",
+              "rateMin": 1,
+              "rateMax": 5,
+              "minRateDescription": "Not satisfied",
+              "maxRateDescription": "Very satisfied"
+            },
+            {
+              "type": "comment",
+              "name": "retirementAdvice",
+              "title": "What advice would you give to those planning for retirement?"
+            }
+          ]
+        }
+      ]
+    },
+    
+
+    {
+      "name": "feedbackPage",
+      "title": "Additional Feedback",
+      "elements": [
+        {
+          "type": "html",
+          "name": "feedbackInfo",
+          "html": "<div><h4>Thank you for providing your information!</h4><p>We'd like to know about your experience with this survey.</p></div>"
+        },
+        {
+          "type": "rating",
+          "name": "surveyRating",
+          "title": "How would you rate this survey?",
+          "rateMin": 1,
+          "rateMax": 5,
+          "minRateDescription": "Poor",
+          "maxRateDescription": "Excellent"
+        },
+        {
+          "type": "comment",
+          "name": "surveyFeedback",
+          "title": "Do you have any suggestions for improving this survey?"
+        }
+      ]
+    }
+  ],
+  "showQuestionNumbers": "off",
+  "showProgressBar": "bottom",
+  "progressBarType": "pages",
+  "completeText": "Submit",
+  "pageNextText": "Continue",
+  "pagePrevText": "Previous",
+  "requiredText": "*",
+  "showTitle": true,
+  "showPageTitles": true,
+  "questionsOrder": "initial",
+  "clearInvisibleValues": "onHidden"
+}

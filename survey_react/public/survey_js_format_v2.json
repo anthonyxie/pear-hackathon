@@ -1,0 +1,2026 @@
+{
+  "title": "Survey for OpenAI \u2192 WINDSURF",
+  "logoPosition": "right",
+  "pages": [
+    {
+      "name": "c4419429-3ae4-4150-aa5b-9c4c0229ffd8",
+      "title": "Screener",
+      "description": "Initial eligibility questions",
+      "elements": [
+        {
+          "name": "b73d7ece-ebc9-4504-8af0-bd23b4ba7b01",
+          "title": "Which of the following best describes your current role?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Engineering manager / technical lead",
+              "text": "Engineering manager / technical lead"
+            },
+            {
+              "value": "Director or VP of Engineering",
+              "text": "Director or VP of Engineering"
+            },
+            {
+              "value": "Software developer / individual contributor",
+              "text": "Software developer / individual contributor"
+            },
+            {
+              "value": "I do not work in a technical role",
+              "text": "I do not work in a technical role"
+            }
+          ],
+          "triggers": [
+            {
+              "type": "runexpression",
+              "expression": "{self} = 'I do not work in a technical role'",
+              "runExpression": "surveyComplete()"
+            }
+          ]
+        },
+        {
+          "name": "ac97348d-a622-43da-9bf4-3539d338bba3",
+          "title": "Which of the following best describes your current role?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Engineering Manager",
+              "text": "Engineering Manager"
+            },
+            {
+              "value": "Technical Team Lead",
+              "text": "Technical Team Lead"
+            },
+            {
+              "value": "Director of Engineering",
+              "text": "Director of Engineering"
+            },
+            {
+              "value": "VP of Engineering",
+              "text": "VP of Engineering"
+            },
+            {
+              "value": "CTO",
+              "text": "CTO"
+            },
+            {
+              "value": "Other technical leadership role",
+              "text": "Other technical leadership role"
+            },
+            {
+              "value": "None of the above",
+              "text": "None of the above"
+            }
+          ]
+        },
+        {
+          "name": "66316ef5-e6b7-4858-bfca-3df1d7d0f7be",
+          "title": "How familiar are you with WINDSURF's products or services?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "1",
+              "text": "1"
+            },
+            {
+              "value": "2",
+              "text": "2"
+            },
+            {
+              "value": "3",
+              "text": "3"
+            },
+            {
+              "value": "4",
+              "text": "4"
+            },
+            {
+              "value": "5 (1 = Not at all familiar",
+              "text": "5 (1 = Not at all familiar"
+            },
+            {
+              "value": "5 = Extremely familiar)",
+              "text": "5 = Extremely familiar)"
+            }
+          ]
+        },
+        {
+          "name": "5cba617d-fa56-4b8f-bd3d-24d5151f825f",
+          "title": "Have you interacted professionally with WINDSURF's technology in the past 2 years?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "name": "bdfd2138-f14c-42f4-9608-0feb2780f295",
+          "title": "Which of the following most accurately describes your experience with WINDSURF? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Evaluated their technology for potential use",
+              "text": "Evaluated their technology for potential use"
+            },
+            {
+              "value": "Implemented their solutions in my organization",
+              "text": "Implemented their solutions in my organization"
+            },
+            {
+              "value": "Worked directly with their engineering team",
+              "text": "Worked directly with their engineering team"
+            },
+            {
+              "value": "Competed with their products/services",
+              "text": "Competed with their products/services"
+            },
+            {
+              "value": "Attended their technical demonstrations or webinars",
+              "text": "Attended their technical demonstrations or webinars"
+            },
+            {
+              "value": "Followed their technical developments",
+              "text": "Followed their technical developments"
+            },
+            {
+              "value": "No direct experience",
+              "text": "No direct experience"
+            }
+          ]
+        },
+        {
+          "name": "cd4ba509-9e3f-4782-84fa-91f3a171be42",
+          "title": "In your current role, what level of influence do you have in technology adoption or partnership decisions?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Primary decision maker",
+              "text": "Primary decision maker"
+            },
+            {
+              "value": "Strong influence on decisions",
+              "text": "Strong influence on decisions"
+            },
+            {
+              "value": "Provide technical input to decisions",
+              "text": "Provide technical input to decisions"
+            },
+            {
+              "value": "Limited influence",
+              "text": "Limited influence"
+            },
+            {
+              "value": "No influence",
+              "text": "No influence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "d5246d11-cc37-44e5-8660-5c380761e1ec",
+      "title": "Awareness",
+      "description": "Measures baseline familiarity",
+      "elements": [
+        {
+          "name": "f6d4dd7e-4cec-4af4-8b01-94faf286fc6e",
+          "title": "How familiar are you with WINDSURF's technology or services?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Extremely familiar \u2013 daily user",
+              "text": "Extremely familiar \u2013 daily user"
+            },
+            {
+              "value": "Somewhat familiar \u2013 occasional user",
+              "text": "Somewhat familiar \u2013 occasional user"
+            },
+            {
+              "value": "Heard of it but never used it",
+              "text": "Heard of it but never used it"
+            },
+            {
+              "value": "I've never heard of WINDSURF",
+              "text": "I've never heard of WINDSURF"
+            }
+          ],
+          "triggers": [
+            {
+              "type": "runexpression",
+              "expression": "{self} = 'I've never heard of WINDSURF'",
+              "runExpression": "surveyComplete()"
+            }
+          ]
+        },
+        {
+          "name": "aec68ac8-db32-4035-80c3-2165fde2dcbb",
+          "title": "What features of Windsurf (formerly Codeium) do your engineering teams currently use? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Code completion",
+              "text": "Code completion"
+            },
+            {
+              "value": "Code chat/Q&A",
+              "text": "Code chat/Q&A"
+            },
+            {
+              "value": "Automated documentation",
+              "text": "Automated documentation"
+            },
+            {
+              "value": "Repository search",
+              "text": "Repository search"
+            },
+            {
+              "value": "GitHub integration",
+              "text": "GitHub integration"
+            },
+            {
+              "value": "Code transformations",
+              "text": "Code transformations"
+            },
+            {
+              "value": "Debugging assistance",
+              "text": "Debugging assistance"
+            },
+            {
+              "value": "We don't currently use Windsurf",
+              "text": "We don't currently use Windsurf"
+            },
+            {
+              "value": "Not sure",
+              "text": "Not sure"
+            }
+          ]
+        },
+        {
+          "name": "fb8dff4a-8a61-4e95-af54-fd540786ec9a",
+          "title": "How long has your team been using Windsurf's products?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Less than 6 months",
+              "text": "Less than 6 months"
+            },
+            {
+              "value": "6-12 months",
+              "text": "6-12 months"
+            },
+            {
+              "value": "1-2 years (including when it was Codeium)",
+              "text": "1-2 years (including when it was Codeium)"
+            },
+            {
+              "value": "More than 2 years",
+              "text": "More than 2 years"
+            },
+            {
+              "value": "We evaluated but didn't adopt",
+              "text": "We evaluated but didn't adopt"
+            },
+            {
+              "value": "We've never used it",
+              "text": "We've never used it"
+            }
+          ]
+        },
+        {
+          "name": "00ca9db5-7dc4-49b0-b0a6-8aa7d21b09b7",
+          "title": "On average, how frequently do your developers interact with Windsurf's AI coding assistant during their workflow?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Multiple times per hour",
+              "text": "Multiple times per hour"
+            },
+            {
+              "value": "A few times per day",
+              "text": "A few times per day"
+            },
+            {
+              "value": "A few times per week",
+              "text": "A few times per week"
+            },
+            {
+              "value": "Occasionally (less than weekly)",
+              "text": "Occasionally (less than weekly)"
+            },
+            {
+              "value": "Never/Not applicable",
+              "text": "Never/Not applicable"
+            }
+          ]
+        },
+        {
+          "name": "cd1120ba-c994-4205-a0b4-da8a5d8f8524",
+          "title": "Which Windsurf plan or tier is your organization currently using?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Free tier",
+              "text": "Free tier"
+            },
+            {
+              "value": "Professional plan",
+              "text": "Professional plan"
+            },
+            {
+              "value": "Team plan",
+              "text": "Team plan"
+            },
+            {
+              "value": "Enterprise plan",
+              "text": "Enterprise plan"
+            },
+            {
+              "value": "Custom solution",
+              "text": "Custom solution"
+            },
+            {
+              "value": "Previously used but discontinued",
+              "text": "Previously used but discontinued"
+            },
+            {
+              "value": "Not currently using",
+              "text": "Not currently using"
+            },
+            {
+              "value": "Not sure",
+              "text": "Not sure"
+            }
+          ]
+        },
+        {
+          "name": "879e7b48-918a-4364-ad09-e4ecb978db5e",
+          "title": "When comparing Windsurf to other AI coding assistants (like GitHub Copilot or Cursor), what aspects of Windsurf do you find most valuable? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Code quality",
+              "text": "Code quality"
+            },
+            {
+              "value": "Accuracy of suggestions",
+              "text": "Accuracy of suggestions"
+            },
+            {
+              "value": "Speed/performance",
+              "text": "Speed/performance"
+            },
+            {
+              "value": "Language/framework support",
+              "text": "Language/framework support"
+            },
+            {
+              "value": "Privacy/security features",
+              "text": "Privacy/security features"
+            },
+            {
+              "value": "IDE integration options",
+              "text": "IDE integration options"
+            },
+            {
+              "value": "UI/UX",
+              "text": "UI/UX"
+            },
+            {
+              "value": "Customization capabilities",
+              "text": "Customization capabilities"
+            },
+            {
+              "value": "Cost-effectiveness",
+              "text": "Cost-effectiveness"
+            },
+            {
+              "value": "Haven't compared to others",
+              "text": "Haven't compared to others"
+            },
+            {
+              "value": "Don't use Windsurf",
+              "text": "Don't use Windsurf"
+            }
+          ]
+        },
+        {
+          "name": "3119fb98-3007-4782-aa15-e34e7edea4de",
+          "title": "Which IDEs or code editors has your team integrated Windsurf with? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "VS Code",
+              "text": "VS Code"
+            },
+            {
+              "value": "JetBrains IDEs (IntelliJ",
+              "text": "JetBrains IDEs (IntelliJ"
+            },
+            {
+              "value": "PyCharm",
+              "text": "PyCharm"
+            },
+            {
+              "value": "etc.)",
+              "text": "etc.)"
+            },
+            {
+              "value": "Visual Studio",
+              "text": "Visual Studio"
+            },
+            {
+              "value": "Vim/Neovim",
+              "text": "Vim/Neovim"
+            },
+            {
+              "value": "Web-based IDEs",
+              "text": "Web-based IDEs"
+            },
+            {
+              "value": "Emacs",
+              "text": "Emacs"
+            },
+            {
+              "value": "Command line tool",
+              "text": "Command line tool"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            },
+            {
+              "value": "None - we don't use Windsurf",
+              "text": "None - we don't use Windsurf"
+            }
+          ]
+        },
+        {
+          "name": "157dce69-16ea-49e8-899d-0c221f42f197",
+          "title": "If you were to describe the impact Windsurf has had on your team's development process, how would you rate it?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "1",
+              "text": "1"
+            },
+            {
+              "value": "2",
+              "text": "2"
+            },
+            {
+              "value": "3",
+              "text": "3"
+            },
+            {
+              "value": "4",
+              "text": "4"
+            },
+            {
+              "value": "5 (1 = No positive impact",
+              "text": "5 (1 = No positive impact"
+            },
+            {
+              "value": "5 = Transformative impact)",
+              "text": "5 = Transformative impact)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8269016a-8821-4ec6-8260-25e2f4f62aae",
+      "title": "Usage",
+      "description": "Explores depth & frequency of product use",
+      "elements": [
+        {
+          "name": "f87bbcdd-f146-4816-af07-eaf77f1934eb",
+          "title": "How long has your organisation actively used WINDSURF tools?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "More than 2 years",
+              "text": "More than 2 years"
+            },
+            {
+              "value": "1-2 years",
+              "text": "1-2 years"
+            },
+            {
+              "value": "Less than 1 year",
+              "text": "Less than 1 year"
+            },
+            {
+              "value": "We have never used WINDSURF",
+              "text": "We have never used WINDSURF"
+            }
+          ],
+          "triggers": [
+            {
+              "type": "runexpression",
+              "expression": "{self} = 'We have never used WINDSURF'",
+              "runExpression": "surveyComplete()"
+            }
+          ]
+        },
+        {
+          "name": "028dbeea-5e73-4b90-91a5-7d37e0f835a0",
+          "title": "How many developers on your team actively use Windsurf's AI coding tools?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "1-5",
+              "text": "1-5"
+            },
+            {
+              "value": "6-15",
+              "text": "6-15"
+            },
+            {
+              "value": "16-30",
+              "text": "16-30"
+            },
+            {
+              "value": "31-50",
+              "text": "31-50"
+            },
+            {
+              "value": "51-100",
+              "text": "51-100"
+            },
+            {
+              "value": "100+",
+              "text": "100+"
+            },
+            {
+              "value": "None",
+              "text": "None"
+            }
+          ]
+        },
+        {
+          "name": "28f35df1-c313-454c-8768-3e8c379c6507",
+          "title": "What percentage of your development team has adopted Windsurf as part of their regular workflow?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Less than 25%",
+              "text": "Less than 25%"
+            },
+            {
+              "value": "25-50%",
+              "text": "25-50%"
+            },
+            {
+              "value": "51-75%",
+              "text": "51-75%"
+            },
+            {
+              "value": "76-100%",
+              "text": "76-100%"
+            },
+            {
+              "value": "Not implemented",
+              "text": "Not implemented"
+            }
+          ]
+        },
+        {
+          "name": "ff26f206-ed16-4fc7-8793-9d0e2ab7d8bb",
+          "title": "Which Windsurf features do your engineering teams find most valuable? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Code completion",
+              "text": "Code completion"
+            },
+            {
+              "value": "Code chat/Q&A",
+              "text": "Code chat/Q&A"
+            },
+            {
+              "value": "Automated documentation",
+              "text": "Automated documentation"
+            },
+            {
+              "value": "Repository search",
+              "text": "Repository search"
+            },
+            {
+              "value": "Code transformations",
+              "text": "Code transformations"
+            },
+            {
+              "value": "Debugging assistance",
+              "text": "Debugging assistance"
+            },
+            {
+              "value": "IDE integrations",
+              "text": "IDE integrations"
+            },
+            {
+              "value": "Security features",
+              "text": "Security features"
+            },
+            {
+              "value": "Enterprise administration tools",
+              "text": "Enterprise administration tools"
+            }
+          ]
+        },
+        {
+          "name": "7c98c885-f3d9-4bde-9ea6-da46f9dddfee",
+          "title": "How has the adoption of Windsurf impacted your team's development velocity?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Significant improvement (>30% faster)",
+              "text": "Significant improvement (>30% faster)"
+            },
+            {
+              "value": "Moderate improvement (10-30% faster)",
+              "text": "Moderate improvement (10-30% faster)"
+            },
+            {
+              "value": "Slight improvement (<10% faster)",
+              "text": "Slight improvement (<10% faster)"
+            },
+            {
+              "value": "No noticeable change",
+              "text": "No noticeable change"
+            },
+            {
+              "value": "Reduced velocity",
+              "text": "Reduced velocity"
+            }
+          ]
+        },
+        {
+          "name": "87f7a939-8e04-4e21-8556-a3a979c0bf0f",
+          "title": "What other AI coding assistant tools does your team currently use alongside or instead of Windsurf? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "GitHub Copilot",
+              "text": "GitHub Copilot"
+            },
+            {
+              "value": "Cursor",
+              "text": "Cursor"
+            },
+            {
+              "value": "Amazon CodeWhisperer",
+              "text": "Amazon CodeWhisperer"
+            },
+            {
+              "value": "Tabnine",
+              "text": "Tabnine"
+            },
+            {
+              "value": "IntelliCode",
+              "text": "IntelliCode"
+            },
+            {
+              "value": "None",
+              "text": "None"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            }
+          ]
+        },
+        {
+          "name": "68f8a1ae-9960-4add-8893-7ce70c6553c5",
+          "title": "For which programming languages or frameworks does your team most frequently use Windsurf? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "JavaScript/TypeScript",
+              "text": "JavaScript/TypeScript"
+            },
+            {
+              "value": "Python",
+              "text": "Python"
+            },
+            {
+              "value": "Java",
+              "text": "Java"
+            },
+            {
+              "value": "C/C++",
+              "text": "C/C++"
+            },
+            {
+              "value": "C#",
+              "text": "C#"
+            },
+            {
+              "value": "Go",
+              "text": "Go"
+            },
+            {
+              "value": "Rust",
+              "text": "Rust"
+            },
+            {
+              "value": "PHP",
+              "text": "PHP"
+            },
+            {
+              "value": "Ruby",
+              "text": "Ruby"
+            },
+            {
+              "value": "SQL",
+              "text": "SQL"
+            },
+            {
+              "value": "Infrastructure-as-Code",
+              "text": "Infrastructure-as-Code"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            }
+          ]
+        },
+        {
+          "name": "9a4cb7dd-847f-4793-9237-d0d95d5fee50",
+          "title": "What barriers, if any, have limited wider adoption of Windsurf within your engineering organization? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Cost concerns",
+              "text": "Cost concerns"
+            },
+            {
+              "value": "Security/privacy concerns",
+              "text": "Security/privacy concerns"
+            },
+            {
+              "value": "Performance issues",
+              "text": "Performance issues"
+            },
+            {
+              "value": "Limited integration options",
+              "text": "Limited integration options"
+            },
+            {
+              "value": "Accuracy of suggestions",
+              "text": "Accuracy of suggestions"
+            },
+            {
+              "value": "Lack of enterprise features",
+              "text": "Lack of enterprise features"
+            },
+            {
+              "value": "Learning curve",
+              "text": "Learning curve"
+            },
+            {
+              "value": "Developer resistance",
+              "text": "Developer resistance"
+            },
+            {
+              "value": "None - full adoption",
+              "text": "None - full adoption"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "0763b8ab-d6f3-41a7-a525-6678ec8874a7",
+      "title": "Voice of Customer",
+      "description": "Captures satisfaction & pain points",
+      "elements": [
+        {
+          "name": "3f68d6a5-ab0a-4424-a739-96ae5bd912cc",
+          "title": "How would you rate your team's overall satisfaction with Windsurf's AI coding assistant?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "1",
+              "text": "1"
+            },
+            {
+              "value": "2",
+              "text": "2"
+            },
+            {
+              "value": "3",
+              "text": "3"
+            },
+            {
+              "value": "4",
+              "text": "4"
+            },
+            {
+              "value": "5 (1 = Very dissatisfied",
+              "text": "5 (1 = Very dissatisfied"
+            },
+            {
+              "value": "5 = Very satisfied)",
+              "text": "5 = Very satisfied)"
+            }
+          ]
+        },
+        {
+          "name": "f8bba1f9-0eb2-4995-bced-6b16711ac687",
+          "title": "What are the top pain points your engineering team experiences when using Windsurf? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Inaccurate code suggestions",
+              "text": "Inaccurate code suggestions"
+            },
+            {
+              "value": "Performance/speed issues",
+              "text": "Performance/speed issues"
+            },
+            {
+              "value": "IDE integration problems",
+              "text": "IDE integration problems"
+            },
+            {
+              "value": "Language support limitations",
+              "text": "Language support limitations"
+            },
+            {
+              "value": "Security/privacy concerns",
+              "text": "Security/privacy concerns"
+            },
+            {
+              "value": "Cost/licensing issues",
+              "text": "Cost/licensing issues"
+            },
+            {
+              "value": "Lack of customization options",
+              "text": "Lack of customization options"
+            },
+            {
+              "value": "Complex implementation",
+              "text": "Complex implementation"
+            },
+            {
+              "value": "Poor technical support",
+              "text": "Poor technical support"
+            },
+            {
+              "value": "Insufficient documentation",
+              "text": "Insufficient documentation"
+            },
+            {
+              "value": "Limited enterprise features",
+              "text": "Limited enterprise features"
+            },
+            {
+              "value": "None - works well for us",
+              "text": "None - works well for us"
+            }
+          ]
+        },
+        {
+          "name": "100534da-e0f7-435d-846a-3b87669050c4",
+          "title": "How satisfied are you with the technical support provided by the Windsurf team?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Extremely satisfied",
+              "text": "Extremely satisfied"
+            },
+            {
+              "value": "Somewhat satisfied",
+              "text": "Somewhat satisfied"
+            },
+            {
+              "value": "Neither satisfied nor dissatisfied",
+              "text": "Neither satisfied nor dissatisfied"
+            },
+            {
+              "value": "Somewhat dissatisfied",
+              "text": "Somewhat dissatisfied"
+            },
+            {
+              "value": "Extremely dissatisfied",
+              "text": "Extremely dissatisfied"
+            },
+            {
+              "value": "We haven't used their support",
+              "text": "We haven't used their support"
+            }
+          ]
+        },
+        {
+          "name": "e5c0819c-e834-44c5-8e07-a11fab981ca4",
+          "title": "Which improvements to Windsurf would most benefit your engineering organization? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Better code suggestion accuracy",
+              "text": "Better code suggestion accuracy"
+            },
+            {
+              "value": "Improved performance/speed",
+              "text": "Improved performance/speed"
+            },
+            {
+              "value": "Enhanced security features",
+              "text": "Enhanced security features"
+            },
+            {
+              "value": "More language/framework support",
+              "text": "More language/framework support"
+            },
+            {
+              "value": "Advanced enterprise management",
+              "text": "Advanced enterprise management"
+            },
+            {
+              "value": "Better IDE integrations",
+              "text": "Better IDE integrations"
+            },
+            {
+              "value": "Expanded documentation capabilities",
+              "text": "Expanded documentation capabilities"
+            },
+            {
+              "value": "Simplified deployment",
+              "text": "Simplified deployment"
+            },
+            {
+              "value": "More customization options",
+              "text": "More customization options"
+            },
+            {
+              "value": "Lower pricing",
+              "text": "Lower pricing"
+            },
+            {
+              "value": "Better onboarding/training resources",
+              "text": "Better onboarding/training resources"
+            }
+          ]
+        },
+        {
+          "name": "bd136beb-9b1c-425d-9a2b-013069d47fa2",
+          "title": "How has Windsurf impacted your team's code quality?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Significantly improved",
+              "text": "Significantly improved"
+            },
+            {
+              "value": "Somewhat improved",
+              "text": "Somewhat improved"
+            },
+            {
+              "value": "No noticeable change",
+              "text": "No noticeable change"
+            },
+            {
+              "value": "Somewhat decreased",
+              "text": "Somewhat decreased"
+            },
+            {
+              "value": "Significantly decreased",
+              "text": "Significantly decreased"
+            }
+          ]
+        },
+        {
+          "name": "4848c87a-c2b8-4f12-8151-e801695bf45f",
+          "title": "What is your team's experience with Windsurf's response to feature requests or bug reports?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Very responsive - issues addressed quickly",
+              "text": "Very responsive - issues addressed quickly"
+            },
+            {
+              "value": "Somewhat responsive - most issues addressed",
+              "text": "Somewhat responsive - most issues addressed"
+            },
+            {
+              "value": "Neutral - mixed experience",
+              "text": "Neutral - mixed experience"
+            },
+            {
+              "value": "Somewhat unresponsive - slow to address issues",
+              "text": "Somewhat unresponsive - slow to address issues"
+            },
+            {
+              "value": "Very unresponsive - issues rarely addressed",
+              "text": "Very unresponsive - issues rarely addressed"
+            },
+            {
+              "value": "We haven't submitted requests",
+              "text": "We haven't submitted requests"
+            }
+          ]
+        },
+        {
+          "name": "22ce6e66-191b-422b-a31b-a46e73a5ff45",
+          "title": "What would be the most valuable enhancement Windsurf could make to better support your enterprise needs?",
+          "isRequired": true,
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "904065cf-306f-4939-8b7f-d9e66d106ba0",
+      "title": "Advocacy",
+      "description": "Net Promoter / referral intent",
+      "elements": [
+        {
+          "name": "88c5c502-08ab-4f5c-8007-49a00bb0f461",
+          "title": "On a scale from 0-10, how likely are you to recommend Windsurf to other engineering managers or technical leaders?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "0",
+              "text": "0"
+            },
+            {
+              "value": "1",
+              "text": "1"
+            },
+            {
+              "value": "2",
+              "text": "2"
+            },
+            {
+              "value": "3",
+              "text": "3"
+            },
+            {
+              "value": "4",
+              "text": "4"
+            },
+            {
+              "value": "5",
+              "text": "5"
+            },
+            {
+              "value": "6",
+              "text": "6"
+            },
+            {
+              "value": "7",
+              "text": "7"
+            },
+            {
+              "value": "8",
+              "text": "8"
+            },
+            {
+              "value": "9",
+              "text": "9"
+            },
+            {
+              "value": "10",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "name": "a02b46a0-ccf6-47a6-a598-c5d8d95dffff",
+          "title": "What is the primary reason for your likelihood to recommend (or not recommend) Windsurf?",
+          "isRequired": true,
+          "type": "text"
+        },
+        {
+          "name": "65f19eb6-c23b-459f-8468-34f281b1e90f",
+          "title": "Compared to other AI coding assistants your team has used, how would you rate Windsurf's overall value?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Much better than alternatives",
+              "text": "Much better than alternatives"
+            },
+            {
+              "value": "Somewhat better than alternatives",
+              "text": "Somewhat better than alternatives"
+            },
+            {
+              "value": "About the same as alternatives",
+              "text": "About the same as alternatives"
+            },
+            {
+              "value": "Somewhat worse than alternatives",
+              "text": "Somewhat worse than alternatives"
+            },
+            {
+              "value": "Much worse than alternatives",
+              "text": "Much worse than alternatives"
+            },
+            {
+              "value": "Haven't used alternatives",
+              "text": "Haven't used alternatives"
+            }
+          ]
+        },
+        {
+          "name": "3806a1b0-f5c6-4118-9dc9-32a0918189e7",
+          "title": "Which aspects of Windsurf do you believe most differentiate it from competitors like GitHub Copilot or Cursor? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Code suggestion quality",
+              "text": "Code suggestion quality"
+            },
+            {
+              "value": "Performance/speed",
+              "text": "Performance/speed"
+            },
+            {
+              "value": "Privacy/security features",
+              "text": "Privacy/security features"
+            },
+            {
+              "value": "Enterprise management capabilities",
+              "text": "Enterprise management capabilities"
+            },
+            {
+              "value": "Integration options",
+              "text": "Integration options"
+            },
+            {
+              "value": "Cost-effectiveness",
+              "text": "Cost-effectiveness"
+            },
+            {
+              "value": "Developer experience/UI",
+              "text": "Developer experience/UI"
+            },
+            {
+              "value": "Customization options",
+              "text": "Customization options"
+            },
+            {
+              "value": "Technical support",
+              "text": "Technical support"
+            },
+            {
+              "value": "Nothing significantly differentiates it",
+              "text": "Nothing significantly differentiates it"
+            }
+          ]
+        },
+        {
+          "name": "721b6906-671d-4557-a3fb-f9dff07d2396",
+          "title": "Have you already recommended Windsurf to colleagues outside your organization?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "name": "3e08d947-a84d-45c3-a9a0-fce5b10972ac",
+          "title": "Would you be willing to serve as a reference for Windsurf (e.g., case study, testimonial, or speaking with potential customers)?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "name": "3671a45f-ad3f-42e6-897f-5c7aca4081d3",
+          "title": "What features or improvements would make you more likely to recommend Windsurf to other engineering leaders?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Better code accuracy",
+              "text": "Better code accuracy"
+            },
+            {
+              "value": "Improved performance",
+              "text": "Improved performance"
+            },
+            {
+              "value": "Enhanced enterprise features",
+              "text": "Enhanced enterprise features"
+            },
+            {
+              "value": "Better IDE integrations",
+              "text": "Better IDE integrations"
+            },
+            {
+              "value": "More advanced customization",
+              "text": "More advanced customization"
+            },
+            {
+              "value": "More competitive pricing",
+              "text": "More competitive pricing"
+            },
+            {
+              "value": "Better developer onboarding",
+              "text": "Better developer onboarding"
+            },
+            {
+              "value": "Enhanced security features",
+              "text": "Enhanced security features"
+            },
+            {
+              "value": "Improved documentation capabilities",
+              "text": "Improved documentation capabilities"
+            },
+            {
+              "value": "None - already highly recommendable",
+              "text": "None - already highly recommendable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "79eb2ac7-2c5f-4d5a-b3f3-3112b96c1ec3",
+      "title": "KPC",
+      "description": "Key purchase drivers & criteria",
+      "elements": [
+        {
+          "name": "c44307fe-4c24-4838-b7ad-0da3de8b7f5b",
+          "title": "What were the most important factors that influenced your decision to adopt Windsurf for your engineering team? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Developer productivity improvements",
+              "text": "Developer productivity improvements"
+            },
+            {
+              "value": "Cost-effectiveness",
+              "text": "Cost-effectiveness"
+            },
+            {
+              "value": "Quality of AI code suggestions",
+              "text": "Quality of AI code suggestions"
+            },
+            {
+              "value": "Security/privacy features",
+              "text": "Security/privacy features"
+            },
+            {
+              "value": "Integration with existing toolchain",
+              "text": "Integration with existing toolchain"
+            },
+            {
+              "value": "Enterprise management capabilities",
+              "text": "Enterprise management capabilities"
+            },
+            {
+              "value": "Team adoption ease",
+              "text": "Team adoption ease"
+            },
+            {
+              "value": "Technical support quality",
+              "text": "Technical support quality"
+            },
+            {
+              "value": "Previous experience with Codeium",
+              "text": "Previous experience with Codeium"
+            }
+          ]
+        },
+        {
+          "name": "4416ffd5-1b7f-4e70-9b00-c53ba0c5f709",
+          "title": "How would you rank the following factors in terms of their importance when evaluating AI coding assistants like Windsurf?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Developer productivity is most important",
+              "text": "Developer productivity is most important"
+            },
+            {
+              "value": "Code quality/accuracy is most important",
+              "text": "Code quality/accuracy is most important"
+            },
+            {
+              "value": "Security/privacy features are most important",
+              "text": "Security/privacy features are most important"
+            },
+            {
+              "value": "Cost-effectiveness is most important",
+              "text": "Cost-effectiveness is most important"
+            },
+            {
+              "value": "Integration capabilities are most important",
+              "text": "Integration capabilities are most important"
+            }
+          ]
+        },
+        {
+          "name": "e2cb1e0a-54ae-4d30-b034-f7ddcd646166",
+          "title": "On a scale of 1-5, how important is each of the following features in your continued use of Windsurf?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "1",
+              "text": "1"
+            },
+            {
+              "value": "2",
+              "text": "2"
+            },
+            {
+              "value": "3",
+              "text": "3"
+            },
+            {
+              "value": "4",
+              "text": "4"
+            },
+            {
+              "value": "5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "name": "16f36b0f-e87b-43d1-91e1-6cbe372d78e8",
+          "title": "What measurable improvements has your team experienced since implementing Windsurf? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Reduced development time",
+              "text": "Reduced development time"
+            },
+            {
+              "value": "Fewer bugs/defects",
+              "text": "Fewer bugs/defects"
+            },
+            {
+              "value": "Faster onboarding of new developers",
+              "text": "Faster onboarding of new developers"
+            },
+            {
+              "value": "Improved code consistency",
+              "text": "Improved code consistency"
+            },
+            {
+              "value": "Better documentation",
+              "text": "Better documentation"
+            },
+            {
+              "value": "Enhanced developer satisfaction",
+              "text": "Enhanced developer satisfaction"
+            },
+            {
+              "value": "Cost savings",
+              "text": "Cost savings"
+            },
+            {
+              "value": "No measurable improvements yet",
+              "text": "No measurable improvements yet"
+            }
+          ]
+        },
+        {
+          "name": "eef11413-299e-4efa-bdd7-a81b88823ec8",
+          "title": "What technical integrations were most critical in your decision to adopt Windsurf?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "VS Code support",
+              "text": "VS Code support"
+            },
+            {
+              "value": "JetBrains IDE support",
+              "text": "JetBrains IDE support"
+            },
+            {
+              "value": "GitHub/version control integration",
+              "text": "GitHub/version control integration"
+            },
+            {
+              "value": "CI/CD pipeline integration",
+              "text": "CI/CD pipeline integration"
+            },
+            {
+              "value": "Enterprise SSO",
+              "text": "Enterprise SSO"
+            },
+            {
+              "value": "Custom LLM support",
+              "text": "Custom LLM support"
+            },
+            {
+              "value": "API access",
+              "text": "API access"
+            },
+            {
+              "value": "Security tools integration",
+              "text": "Security tools integration"
+            },
+            {
+              "value": "None were critical",
+              "text": "None were critical"
+            }
+          ]
+        },
+        {
+          "name": "287ac588-f745-4a92-9d7d-22abc083dcad",
+          "title": "What is your organization's primary motivation for using AI coding assistants like Windsurf?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Accelerate development velocity",
+              "text": "Accelerate development velocity"
+            },
+            {
+              "value": "Reduce development costs",
+              "text": "Reduce development costs"
+            },
+            {
+              "value": "Improve code quality",
+              "text": "Improve code quality"
+            },
+            {
+              "value": "Address developer shortages",
+              "text": "Address developer shortages"
+            },
+            {
+              "value": "Standardize coding practices",
+              "text": "Standardize coding practices"
+            },
+            {
+              "value": "Stay competitive with industry trends",
+              "text": "Stay competitive with industry trends"
+            },
+            {
+              "value": "Developer satisfaction/retention",
+              "text": "Developer satisfaction/retention"
+            }
+          ]
+        },
+        {
+          "name": "b2390379-38ef-49b7-8de9-9d363ff038ab",
+          "title": "If you were to allocate 100 points across the following factors based on their importance in your decision to use Windsurf, how would you distribute them?",
+          "isRequired": true,
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "3bbca759-3e92-4f30-b92c-368040861d76",
+      "title": "Channel",
+      "description": "Discovery & buying channels",
+      "elements": [
+        {
+          "name": "788a9e34-e6eb-4788-954c-9bf512864854",
+          "title": "How did your organization initially discover Windsurf (formerly Codeium)?",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Developer recommendation",
+              "text": "Developer recommendation"
+            },
+            {
+              "value": "Industry conference/event",
+              "text": "Industry conference/event"
+            },
+            {
+              "value": "Online search/research",
+              "text": "Online search/research"
+            },
+            {
+              "value": "Vendor outreach/sales",
+              "text": "Vendor outreach/sales"
+            },
+            {
+              "value": "Social media",
+              "text": "Social media"
+            },
+            {
+              "value": "Tech publication/review",
+              "text": "Tech publication/review"
+            },
+            {
+              "value": "Word of mouth from peer",
+              "text": "Word of mouth from peer"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            }
+          ]
+        },
+        {
+          "name": "93b17ec2-271f-4622-a18a-0af0c1b02aa4",
+          "title": "Who were the key influencers or decision-makers in your organization's evaluation of Windsurf? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Engineering managers",
+              "text": "Engineering managers"
+            },
+            {
+              "value": "Individual developers",
+              "text": "Individual developers"
+            },
+            {
+              "value": "CTO/CIO",
+              "text": "CTO/CIO"
+            },
+            {
+              "value": "VP of Engineering",
+              "text": "VP of Engineering"
+            },
+            {
+              "value": "Procurement/purchasing department",
+              "text": "Procurement/purchasing department"
+            },
+            {
+              "value": "Security/compliance team",
+              "text": "Security/compliance team"
+            },
+            {
+              "value": "DevOps team",
+              "text": "DevOps team"
+            },
+            {
+              "value": "External consultants",
+              "text": "External consultants"
+            }
+          ]
+        },
+        {
+          "name": "acd66228-c4cb-4188-9298-4cbafd9bd313",
+          "title": "What was your organization's procurement process for adopting Windsurf? Select all steps that applied.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Free trial/POC",
+              "text": "Free trial/POC"
+            },
+            {
+              "value": "Technical evaluation",
+              "text": "Technical evaluation"
+            },
+            {
+              "value": "Security assessment",
+              "text": "Security assessment"
+            },
+            {
+              "value": "Competitive analysis with alternatives",
+              "text": "Competitive analysis with alternatives"
+            },
+            {
+              "value": "Cost-benefit analysis",
+              "text": "Cost-benefit analysis"
+            },
+            {
+              "value": "Contract negotiation",
+              "text": "Contract negotiation"
+            },
+            {
+              "value": "Legal review",
+              "text": "Legal review"
+            },
+            {
+              "value": "Executive approval",
+              "text": "Executive approval"
+            },
+            {
+              "value": "Procurement department approval",
+              "text": "Procurement department approval"
+            },
+            {
+              "value": "Gradual rollout",
+              "text": "Gradual rollout"
+            }
+          ]
+        },
+        {
+          "name": "640c5c71-8589-4b50-af32-43bc6a04337c",
+          "title": "How long was the sales cycle from initial discovery to signed contract for Windsurf in your organization?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Less than 1 month",
+              "text": "Less than 1 month"
+            },
+            {
+              "value": "1-3 months",
+              "text": "1-3 months"
+            },
+            {
+              "value": "4-6 months",
+              "text": "4-6 months"
+            },
+            {
+              "value": "7-12 months",
+              "text": "7-12 months"
+            },
+            {
+              "value": "More than 12 months",
+              "text": "More than 12 months"
+            },
+            {
+              "value": "Still in evaluation",
+              "text": "Still in evaluation"
+            }
+          ]
+        },
+        {
+          "name": "a6ffb482-df43-40d1-a10a-591872f5a497",
+          "title": "What type of contract does your organization currently have with Windsurf?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Monthly subscription",
+              "text": "Monthly subscription"
+            },
+            {
+              "value": "Annual contract",
+              "text": "Annual contract"
+            },
+            {
+              "value": "Multi-year contract",
+              "text": "Multi-year contract"
+            },
+            {
+              "value": "Enterprise agreement with custom terms",
+              "text": "Enterprise agreement with custom terms"
+            },
+            {
+              "value": "Free tier only",
+              "text": "Free tier only"
+            },
+            {
+              "value": "No formal contract",
+              "text": "No formal contract"
+            }
+          ]
+        },
+        {
+          "name": "bedb2a28-4590-4b85-aa0a-dac20cc83420",
+          "title": "Which aspects of Windsurf's sales process were most effective in your procurement decision? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Product demos/trials",
+              "text": "Product demos/trials"
+            },
+            {
+              "value": "Technical documentation",
+              "text": "Technical documentation"
+            },
+            {
+              "value": "ROI analysis",
+              "text": "ROI analysis"
+            },
+            {
+              "value": "Competitive differentiation",
+              "text": "Competitive differentiation"
+            },
+            {
+              "value": "Responsive sales team",
+              "text": "Responsive sales team"
+            },
+            {
+              "value": "Flexible contract terms",
+              "text": "Flexible contract terms"
+            },
+            {
+              "value": "Enterprise security features",
+              "text": "Enterprise security features"
+            },
+            {
+              "value": "Implementation support",
+              "text": "Implementation support"
+            },
+            {
+              "value": "Pricing structure",
+              "text": "Pricing structure"
+            },
+            {
+              "value": "Developer feedback",
+              "text": "Developer feedback"
+            }
+          ]
+        },
+        {
+          "name": "cf3a1cc4-ae11-45ab-8c67-17df7ab5b3dd",
+          "title": "What challenges or obstacles did you encounter during the procurement process for Windsurf? Select all that apply.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Budget constraints",
+              "text": "Budget constraints"
+            },
+            {
+              "value": "Security/compliance concerns",
+              "text": "Security/compliance concerns"
+            },
+            {
+              "value": "Integration limitations",
+              "text": "Integration limitations"
+            },
+            {
+              "value": "Internal resistance to adoption",
+              "text": "Internal resistance to adoption"
+            },
+            {
+              "value": "Lengthy approval process",
+              "text": "Lengthy approval process"
+            },
+            {
+              "value": "Difficulty proving ROI",
+              "text": "Difficulty proving ROI"
+            },
+            {
+              "value": "Contract/licensing complexities",
+              "text": "Contract/licensing complexities"
+            },
+            {
+              "value": "Competitive alternatives",
+              "text": "Competitive alternatives"
+            },
+            {
+              "value": "None - process was smooth",
+              "text": "None - process was smooth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "34f7e26c-c44e-4afc-8660-d7e4c249f157",
+      "title": "Brand",
+      "description": "Perceptions & personality of the company",
+      "elements": [
+        {
+          "name": "618b87f1-c99f-4861-8b37-511ab037018f",
+          "title": "How would you describe your team's overall experience with Windsurf's AI coding assistant?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Highly frustrating",
+              "text": "Highly frustrating"
+            },
+            {
+              "value": "Somewhat frustrating",
+              "text": "Somewhat frustrating"
+            },
+            {
+              "value": "Neutral",
+              "text": "Neutral"
+            },
+            {
+              "value": "Somewhat satisfying",
+              "text": "Somewhat satisfying"
+            },
+            {
+              "value": "Highly satisfying",
+              "text": "Highly satisfying"
+            }
+          ]
+        },
+        {
+          "name": "5d133ff3-f802-47a6-9774-c557c347d2db",
+          "title": "What emotions do your developers most commonly express when using Windsurf in their daily workflow? Select up to 3.",
+          "isRequired": true,
+          "type": "checkbox",
+          "choices": [
+            {
+              "value": "Relief",
+              "text": "Relief"
+            },
+            {
+              "value": "Frustration",
+              "text": "Frustration"
+            },
+            {
+              "value": "Excitement",
+              "text": "Excitement"
+            },
+            {
+              "value": "Surprise",
+              "text": "Surprise"
+            },
+            {
+              "value": "Trust",
+              "text": "Trust"
+            },
+            {
+              "value": "Skepticism",
+              "text": "Skepticism"
+            },
+            {
+              "value": "Confidence",
+              "text": "Confidence"
+            },
+            {
+              "value": "Anxiety",
+              "text": "Anxiety"
+            },
+            {
+              "value": "Indifference",
+              "text": "Indifference"
+            },
+            {
+              "value": "Satisfaction",
+              "text": "Satisfaction"
+            },
+            {
+              "value": "Confusion",
+              "text": "Confusion"
+            }
+          ]
+        },
+        {
+          "name": "99219584-c213-4f0d-8e08-e2c1eba8101a",
+          "title": "How would you characterize the quality of code suggestions provided by Windsurf?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Consistently poor",
+              "text": "Consistently poor"
+            },
+            {
+              "value": "Occasionally helpful",
+              "text": "Occasionally helpful"
+            },
+            {
+              "value": "Adequately reliable",
+              "text": "Adequately reliable"
+            },
+            {
+              "value": "Mostly excellent",
+              "text": "Mostly excellent"
+            },
+            {
+              "value": "Exceptionally accurate",
+              "text": "Exceptionally accurate"
+            }
+          ]
+        },
+        {
+          "name": "75a1d57c-eff1-40f5-b7c7-ce5c3555bd40",
+          "title": "Which of the following best describes the impact Windsurf has had on your developers' workflow?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Disruptive interruption",
+              "text": "Disruptive interruption"
+            },
+            {
+              "value": "Minor distraction",
+              "text": "Minor distraction"
+            },
+            {
+              "value": "Neutral presence",
+              "text": "Neutral presence"
+            },
+            {
+              "value": "Helpful assistant",
+              "text": "Helpful assistant"
+            },
+            {
+              "value": "Essential productivity tool",
+              "text": "Essential productivity tool"
+            }
+          ]
+        },
+        {
+          "name": "00e926f5-e168-4cdd-bd32-e49b96361708",
+          "title": "How would you describe Windsurf's user interface and integration with your development environment?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Clunky and intrusive",
+              "text": "Clunky and intrusive"
+            },
+            {
+              "value": "Somewhat awkward",
+              "text": "Somewhat awkward"
+            },
+            {
+              "value": "Adequately functional",
+              "text": "Adequately functional"
+            },
+            {
+              "value": "Smooth and intuitive",
+              "text": "Smooth and intuitive"
+            },
+            {
+              "value": "Seamless and invisible",
+              "text": "Seamless and invisible"
+            }
+          ]
+        },
+        {
+          "name": "ef4ceca8-d9c6-4daa-b0ff-3f62df417c3e",
+          "title": "Which three words would you use to describe Windsurf based on your team's experience with the product?",
+          "isRequired": true,
+          "type": "text"
+        },
+        {
+          "name": "ad49475a-7e42-467a-8f14-db0ef3d2e594",
+          "title": "When your developers discuss Windsurf among themselves, what sentiment is most commonly expressed?",
+          "isRequired": true,
+          "type": "radiogroup",
+          "choices": [
+            {
+              "value": "Strongly negative",
+              "text": "Strongly negative"
+            },
+            {
+              "value": "Somewhat negative",
+              "text": "Somewhat negative"
+            },
+            {
+              "value": "Neutral/mixed",
+              "text": "Neutral/mixed"
+            },
+            {
+              "value": "Somewhat positive",
+              "text": "Somewhat positive"
+            },
+            {
+              "value": "Strongly positive",
+              "text": "Strongly positive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "survey_complete",
+      "title": "Thank You",
+      "description": "Thank you for your participation in our survey.",
+      "elements": []
+    }
+  ],
+  "completedHtml": "<h3>Thank you for completing the survey!</h3>"
+}
