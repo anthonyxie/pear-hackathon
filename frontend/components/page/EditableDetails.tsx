@@ -123,11 +123,11 @@ function QuestionCard({
   const handleEditQuestionType = (type: string) => {
     const typeValue = type as
       | "text"
-      | "multiple choice"
-      | "single choice"
+      | "multiple_choice"
+      | "multiple_select"
       | "scale";
     const newOptions =
-      (typeValue === "multiple choice" || typeValue === "single choice") &&
+      (typeValue === "multiple_choice" || typeValue === "multiple_select") &&
       !question.options
         ? ["Option 1"]
         : question.options;
@@ -179,17 +179,14 @@ function QuestionCard({
                 Text
               </DropdownMenuItem>
               <DropdownMenuItem
-                onClick={() => handleEditQuestionType("multiple choice")}
+                onClick={() => handleEditQuestionType("multiple_choice")}
               >
                 Multiple Choice
               </DropdownMenuItem>
               <DropdownMenuItem
-                onClick={() => handleEditQuestionType("single choice")}
+                onClick={() => handleEditQuestionType("multiple_select")}
               >
-                Single Choice
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleEditQuestionType("scale")}>
-                Scale
+                Multiple Select
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -227,8 +224,8 @@ function QuestionCard({
           </Button>
         </div>
       </div>
-      {(question?.type === "multiple choice" ||
-        question?.type === "single choice") &&
+      {(question?.type === "multiple_choice" ||
+        question?.type === "multiple_select") &&
         question.options && (
           <CardContent className="-mt-4">
             <QuestionOptions

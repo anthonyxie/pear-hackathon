@@ -25,8 +25,8 @@ export default function ChatPage({
       acquiringCompany,
       targetCompany,
       surveyType,
+      productCategories: [],
       targetAudience,
-      productCategories,
     });
     const data = response.data;
     if (data.error) {

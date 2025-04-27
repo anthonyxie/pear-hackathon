@@ -23,7 +23,7 @@ interface Section {
 interface Question {
   id: string;
   text: string;
-  type: "text" | "multiple choice" | "single choice" | "scale";
+  type: "text" | "multiple_choice" | "multiple_select" | "scale";
   options: string[] | null;
   order: number;
   required: boolean;
