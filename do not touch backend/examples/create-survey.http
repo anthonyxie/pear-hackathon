@@ -1,0 +1,46 @@
+### Create a new survey
+POST http://localhost:3001/api/surveys
+Content-Type: application/json
+
+{
+  "acquiringCompany": "TechGiant Inc.",
+  "targetCompany": "InnovateX",
+  "surveyType": "consumer",
+  "productCategories": ["Mobile App", "Web Platform"]
+}
+
+### Get all surveys
+GET http://localhost:3001/api/surveys
+
+### Get a specific survey (replace with an actual ID)
+GET http://localhost:3001/api/surveys/{survey_id}
+
+### Submit a response to a survey (replace with an actual survey ID)
+POST http://localhost:3001/api/surveys/{survey_id}/responses
+Content-Type: application/json
+
+{
+  "answers": [
+    {
+      "questionId": "question_id_1",
+      "value": true,
+      "skipped": false
+    },
+    {
+      "questionId": "question_id_2",
+      "value": ["option_1", "option_3"],
+      "skipped": false
+    },
+    {
+      "questionId": "question_id_3",
+      "value": "This is a text response",
+      "skipped": false
+    }
+  ],
+  "metadata": {
+    "startTime": "2023-04-26T15:30:00Z"
+  }
+}
+
+### Get responses for a survey (replace with an actual survey ID)
+GET http://localhost:3001/api/surveys/{survey_id}/responses

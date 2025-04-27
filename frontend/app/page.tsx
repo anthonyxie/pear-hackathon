@@ -1,75 +1,47 @@
 "use client";
-import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
+import InitialPage from "@/components/page/InitialPage";
+import SecondaryPage from "@/components/page/SecondaryPage";
 import { useState } from "react";
-
+import { ModeToggle } from "@/components/ui/theme-button";
+import TestSurveyPage from "@/components/page/TestSurveyPage";
+import { Survey } from "@/utils/types";
 export default function ChatPage() {
-  const [messages, setMessages] = useState<
-    { id: string; role: string; content: string }[]
-  >([]);
+  const [page, setPage] = useState<number>(0);
+  const [survey, setSurvey] = useState<Survey | null>(null);
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-4 md:p-8">
-      <h1 className="text-2xl font-bold mb-6">Title</h1>
-
-      <Card className="w-full h-80vh flex flex-col p-4 shadow-lg">
-        <div className="flex-1 overflow-y-auto mb-4 space-y-4">
-          {messages.length === 0 ? (
-            <div className="flex items-center justify-center h-full text-center text-muted-foreground">
-              <div>
-                <p className="mb-2">👋 Hello!</p>
-                <p>How can I help you today?</p>
-              </div>
-            </div>
-          ) : (
-            messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${
-                  message.role === "user" ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div
-                  className={`flex items-start gap-2 max-w-[80%] ${
-                    message.role === "user" ? "flex-row-reverse" : "flex-row"
-                  }`}
-                >
-                  <Avatar className="h-8 w-8">
-                    {message.role === "user" ? (
-                      <div className="bg-primary text-primary-foreground h-full w-full flex items-center justify-center text-sm">
-                        U
-                      </div>
-                    ) : (
-                      <div className="bg-muted h-full w-full flex items-center justify-center text-sm">
-                        AI
-                      </div>
-                    )}
-                  </Avatar>
-                  <div
-                    className={`rounded-lg px-4 py-2 ${
-                      message.role === "user"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted"
-                    }`}
-                  >
-                    {message.content}
-                  </div>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-
-        <form className="flex gap-2">
-          <Input placeholder="Type your message..." className="flex-1" />
-          <Button type="submit" size="icon">
-            <Send className="h-4 w-4" />
-          </Button>
-        </form>
-      </Card>
+    <div className="w-screen h-screen relative overflow-hidden">
+      <div
+        className={`absolute top-0 left-0 w-full h-full transition-transform duration-400 ease-in-out ${
+          page >= 1 ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
+        <InitialPage setPage={setPage} setSurvey={setSurvey} />
+      </div>
+      <div
+        className={`absolute top-0 left-0 w-full h-full transition-transform duration-400 ease-in-out ${
+          page === 1
+            ? "translate-y-0"
+            : page > 1
+            ? "-translate-y-full"
+            : "translate-y-full"
+        }`}
+      >
+        <SecondaryPage survey={survey} />
+      </div>
+      <div
+        className={`absolute top-0 left-0 w-full h-full transition-transform duration-400 ease-in-out ${
+          page === 2 ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <TestSurveyPage />
+      </div>
+      <div className="absolute bottom-4 right-4 flex gap-2">
+        <button onClick={() => setPage(page === 0 ? 1 : page === 1 ? 2 : 1)}>
+          Toggle Page
+        </button>
+        <ModeToggle />
+      </div>
     </div>
   );
 }

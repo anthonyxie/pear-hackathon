@@ -1,0 +1,123 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&A Survey Generator - Testing Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">M&A Survey Generator - Testing Dashboard</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Generate Survey
+                    </div>
+                    <div class="card-body">
+                        <form id="survey-form">
+                            <div class="mb-3">
+                                <label for="acquiringCompany" class="form-label">Acquiring Company</label>
+                                <input type="text" class="form-control" id="acquiringCompany" value="OpenAI" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="targetCompany" class="form-label">Target Company</label>
+                                <input type="text" class="form-control" id="targetCompany" value="WINDSURF" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="surveyType" class="form-label">Survey Type</label>
+                                <select class="form-select" id="surveyType" required>
+                                    <option value="consumer">Consumer</option>
+                                    <option value="enterprise" selected>Enterprise</option>
+                                </select>
+                            </div>
+
+                            <!-- NEW: target audience -->
+                            <div class="mb-3">
+                                <label for="targetAudience" class="form-label">
+                                    Target&nbsp;Audience&nbsp;<small class="text-muted">(who will answer?)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="targetAudience"
+                                       placeholder="e.g. Engineering managers, DevOps leads"
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="productCategories" class="form-label">Product Categories (comma-separated)</label>
+                                <input type="text" class="form-control" id="productCategories" value="IDE, Code Completion, Documentation Tools" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Generate Survey</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Recent Surveys
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group" id="survey-list">
+                            <!-- Survey list will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>API Request/Response</span>
+                        <button class="btn btn-sm btn-outline-secondary" id="clear-log">Clear</button>
+                    </div>
+                    <div class="card-body">
+                        <pre id="api-log" class="api-log"></pre>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Status
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>API Connection:</span>
+                            <span id="api-status" class="badge bg-secondary">Checking...</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Claude API:</span>
+                            <span id="claude-status" class="badge bg-secondary">Not Tested</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for viewing survey details -->
+    <div class="modal fade" id="surveyModal" tabindex="-1" aria-labelledby="surveyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="surveyModalLabel">Survey Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="survey-details"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
