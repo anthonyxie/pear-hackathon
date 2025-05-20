@@ -105,7 +105,8 @@ curl -X POST http://localhost:5000/api/surveys \
     "acquiringCompany": "OpenAI",
     "targetCompany": "WINDSURF",
     "surveyType": "enterprise",
-    "productCategories": ["IDE", "Code Completion", "Documentation Tools"]
+    "productCategories": ["IDE", "Code Completion", "Documentation Tools"],
+    "targetAudience": "Engineering managers"
   }'
 
 # Get a survey by ID (replace SURVEY_ID with an actual ID)
